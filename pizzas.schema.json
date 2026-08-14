@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pizza guide data",
+  "type": "object",
+  "required": ["visited", "wishlist"],
+  "properties": {
+    "visited": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/visitedPlace" }
+    },
+    "wishlist": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/wishlistPlace" }
+    }
+  },
+  "definitions": {
+    "wishlistPlace": {
+      "type": "object",
+      "required": ["name", "googleMapsLink", "lat", "lng"],
+      "properties": {
+        "name": { "type": "string" },
+        "googleMapsLink": { "type": "string", "format": "uri" },
+        "lat": { "$ref": "#/definitions/coordinate" },
+        "lng": { "$ref": "#/definitions/coordinate" }
+      },
+      "additionalProperties": false
+    },
+    "visitedPlace": {
+      "type": "object",
+      "required": ["name", "googleMapsLink", "lat", "lng", "overallRating", "summary", "fields"],
+      "properties": {
+        "name": { "type": "string" },
+        "googleMapsLink": { "type": "string", "format": "uri" },
+        "lat": { "$ref": "#/definitions/coordinate" },
+        "lng": { "$ref": "#/definitions/coordinate" },
+        "overallRating": {
+          "description": "Score out of a scale, e.g. 8/10 or 4/5. Use null if not yet rated.",
+          "type": ["object", "null"],
+          "required": ["score", "outOf"],
+          "properties": {
+            "score": { "type": "number" },
+            "outOf": { "type": "number" }
+          }
+        },
+        "summary": {
+          "description": "One-line freeform note about the visit. Use null if none.",
+          "type": ["string", "null"]
+        },
+        "fields": {
+          "description": "The NICE breakdown. Use null if not recorded.",
+          "type": ["object", "null"],
+          "properties": {
+            "nice": { "$ref": "#/definitions/ratingField" },
+            "italian": { "$ref": "#/definitions/ratingField" },
+            "theCs": {
+              "description": "Crust / Cheese / Cost / Company notes. Include only the keys that were mentioned.",
+              "type": "object",
+              "properties": {
+                "crust": { "type": "string" },
+                "cheese": { "type": "string" },
+                "cost": { "type": "string" },
+                "company": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "edFactor": {
+              "type": "object",
+              "required": ["status", "note"],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": ["confirmed", "partial", "unconfirmed", "unknown"]
+                },
+                "note": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "coordinate": {
+      "description": "Latitude or longitude. Use null until you've looked it up (open the googleMapsLink, the URL bar / share link will show it) — the place won't appear on the map until both lat and lng are set.",
+      "type": ["number", "null"]
+    },
+    "ratingField": {
+      "type": "object",
+      "required": ["rating", "label", "note"],
+      "properties": {
+        "rating": {
+          "description": "1 (not at all) to 5 (extremely). Use null if it can't be judged on this scale.",
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 5
+        },
+        "label": { "type": ["string", "null"] },
+        "note": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

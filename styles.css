@@ -1,0 +1,531 @@
+:root {
+  --color-bg: #f5ead8;
+  --color-surface: #ebddc5;
+  --color-text: #201e1d;
+  --color-accent: #c67139;
+  --color-accent-2: #7a8a5e;
+
+  --color-neutral-100: #f9f4ed;
+  --color-neutral-200: #eee7db;
+  --color-neutral-600: #82796a;
+  --color-neutral-700: #645c50;
+  --color-neutral-800: #474238;
+
+  --color-accent-200: #ffe1d0;
+  --color-accent-300: #ffc6a5;
+  --color-accent-700: #8c491a;
+
+  --color-accent-2-300: #ccdbb2;
+  --color-accent-2-700: #56633f;
+
+  --font-heading: "Caprasimo", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  --space-2: 8.8px;
+  --space-3: 13.2px;
+  --space-4: 17.6px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+body {
+  background: var(--color-bg);
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+}
+
+.leaflet-tile-pane {
+  filter: sepia(0.42) saturate(0.72) hue-rotate(-6deg) brightness(1.06) contrast(0.9);
+}
+
+.leaflet-container {
+  background: var(--color-neutral-200);
+  font-family: var(--font-body);
+}
+
+.leaflet-control-attribution {
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent) !important;
+  color: var(--color-neutral-700);
+  font-size: 9px;
+  border-radius: 999px 0 0 0;
+  padding: 2px 8px;
+}
+
+.leaflet-control-attribution a {
+  color: var(--color-accent-700);
+}
+
+/* ── chunky chrome ─────────────────────────────────────────── */
+.bar {
+  position: absolute;
+  z-index: 500;
+  left: var(--space-3);
+  right: var(--space-3);
+  top: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px var(--space-4);
+  background: var(--color-bg);
+  border: 3px solid var(--color-text);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--color-text);
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand em {
+  font-style: normal;
+  color: var(--color-accent-700);
+}
+
+.count {
+  margin-left: auto;
+  flex: none;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-neutral-700);
+  text-align: right;
+}
+
+.filters {
+  position: absolute;
+  z-index: 500;
+  bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0;
+  padding: 5px;
+  background: var(--color-bg);
+  border: 3px solid var(--color-text);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--color-text);
+}
+
+.filters button {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-text);
+  background: transparent;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  padding: 11px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.filters button:hover {
+  background: var(--color-accent-200);
+}
+
+.filters button:active {
+  background: var(--color-accent-300);
+}
+
+.filters button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.filters button[aria-pressed="true"]:hover {
+  background: var(--color-accent-600, var(--color-accent-700));
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-text);
+  flex: none;
+}
+
+.swatch.eaten {
+  background: var(--color-accent);
+}
+
+.swatch.totry {
+  background: var(--color-bg);
+  border-style: dashed;
+  border-color: var(--color-accent-2-700);
+}
+
+.filters button[aria-pressed="true"] .swatch {
+  border-color: var(--color-bg);
+}
+
+.filters button[aria-pressed="true"] .swatch.totry {
+  background: transparent;
+  border-color: var(--color-bg);
+}
+
+/* ── pins ─────────────────────────────────────────────────── */
+.pin {
+  position: relative;
+}
+
+.pin .stem {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  height: 12px;
+  margin-left: -1.5px;
+  background: var(--color-text);
+}
+
+.pin .dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  line-height: 1;
+  transition: transform 0.18s cubic-bezier(0.34, 1.7, 0.64, 1), box-shadow 0.18s;
+  transform-origin: 50% 100%;
+}
+
+.pin.eaten .dot {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: 2px 2px 0 var(--color-text);
+}
+
+.pin.totry .dot {
+  background: var(--color-bg);
+  color: var(--color-accent-2-700);
+  border-style: dashed;
+  border-color: var(--color-accent-2-700);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+
+.pin:hover .dot {
+  transform: scale(1.12);
+}
+
+.pin.on .dot {
+  transform: scale(1.22);
+  box-shadow: 3px 3px 0 var(--color-text);
+}
+
+.leaflet-marker-icon:focus-visible {
+  outline: 3px solid var(--color-accent-700);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+/* ── the panel ────────────────────────────────────────────── */
+#panel {
+  position: fixed;
+  z-index: 900;
+  width: min(348px, calc(100vw - 24px));
+  background: var(--color-bg);
+  border: 3px solid var(--color-text);
+  border-radius: 26px;
+  box-shadow: 6px 6px 0 var(--color-text);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.14);
+  transition: transform 0.28s cubic-bezier(0.3, 1.55, 0.55, 1), opacity 0.16s ease-out;
+}
+
+#panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.p-top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.p-kick {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin-bottom: 3px;
+}
+
+.p-kick.totry {
+  color: var(--color-accent-2-700);
+}
+
+.p-name {
+  font-family: var(--font-heading);
+  font-size: 27px;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.p-where {
+  font-size: 12px;
+  color: var(--color-neutral-700);
+  margin-top: 5px;
+}
+
+.score {
+  flex: none;
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: 3px solid var(--color-text);
+  box-shadow: 3px 3px 0 var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.score span {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 3px solid var(--color-text);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 var(--color-text);
+}
+
+.close:hover {
+  background: var(--color-accent-200);
+}
+
+.close:active {
+  background: var(--color-accent-300);
+}
+
+.p-review {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: var(--space-3) 0 0;
+}
+
+.nice {
+  display: grid;
+  gap: 9px;
+  margin-top: var(--space-3);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.row .letter {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  line-height: 1;
+  text-align: center;
+}
+
+.track {
+  height: 13px;
+  border-radius: 999px;
+  background: var(--color-neutral-200);
+  border: 2.5px solid var(--color-text);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-right: 2.5px solid var(--color-text);
+}
+
+.row .word {
+  grid-column: 2;
+  font-size: 11.5px;
+  line-height: 1.2;
+  margin-top: 3px;
+  color: var(--color-neutral-700);
+}
+
+.the-cs {
+  grid-column: 2;
+  font-size: 11.5px;
+  line-height: 1.35;
+  margin-top: 3px;
+  color: var(--color-neutral-700);
+}
+
+.the-cs b {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-neutral-800);
+  text-transform: capitalize;
+}
+
+.ed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.badge {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 2.5px solid var(--color-text);
+}
+
+.badge.yes {
+  background: var(--color-accent-2-300);
+}
+
+.badge.partial {
+  background: var(--color-accent-300);
+}
+
+.badge.no {
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-700);
+}
+
+.key {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--color-neutral-600);
+  margin-top: var(--space-3);
+  padding-top: 9px;
+  border-top: 2px dashed color-mix(in srgb, var(--color-text) 22%, transparent);
+}
+
+.key b {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-neutral-800);
+}
+
+.p-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.p-date {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+
+.maps {
+  margin-left: auto;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-bg);
+  background: var(--color-text);
+  border: 3px solid var(--color-text);
+  border-radius: 999px;
+  padding: 10px 15px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.maps:hover {
+  background: var(--color-accent-700);
+  border-color: var(--color-accent-700);
+}
+
+/* ── geocoding hint banner ────────────────────────────────── */
+.geo-hint {
+  position: absolute;
+  z-index: 500;
+  left: 50%;
+  top: calc(var(--space-3) + 56px);
+  transform: translateX(-50%);
+  max-width: min(420px, calc(100vw - 24px));
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--color-accent-700);
+  background: var(--color-bg);
+  border: 2.5px dashed var(--color-accent-700);
+  border-radius: 16px;
+  padding: 9px 16px;
+}
+
+.geo-hint a {
+  color: inherit;
+}
+
+@media (max-width: 420px) {
+  .brand {
+    font-size: 18px;
+  }
+  .count {
+    display: none;
+  }
+  .filters button {
+    padding: 11px 13px;
+    font-size: 13px;
+  }
+}
