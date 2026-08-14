@@ -124,7 +124,7 @@ function toSpots(data) {
       '<button class="close" type="button" id="closeBtn" aria-label="close">' +
       '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
     const mapsBtn =
-      '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">yes' +
+      '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">maps' +
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
 
     if (s.kind === "totry") {
@@ -152,11 +152,13 @@ function toSpots(data) {
       '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
       summaryHtml +
       (niceRows ? '<div class="nice">' + niceRows + "</div>" : "") +
+      '<div class="p-foot' + (niceRows ? " with-key" : "") + '">' +
       (niceRows
-        ? '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
+        ? '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
           "<b>E</b> ed factor: did I shake a hand while holding a slice</div>"
         : "") +
-      '<div class="p-foot"><div class="p-date"></div>' + mapsBtn + "</div>"
+      mapsBtn +
+      "</div>"
     );
   }
 
