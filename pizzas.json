@@ -55,7 +55,7 @@
       "summary": "Good pizza and live jazz made it better.",
       "fields": {
         "nice": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite nice",
           "note": "quite nice"
         },
@@ -120,7 +120,7 @@
           "note": "nice"
         },
         "italian": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very Italian",
           "note": "very Italian"
         },
@@ -145,7 +145,7 @@
       "summary": "Great tiramisu at the end.",
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
@@ -177,12 +177,12 @@
       "summary": null,
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
         "italian": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very Italian",
           "note": "Very Italian, not very innovative"
         },
@@ -223,7 +223,7 @@
           "note": "extremely nice"
         },
         "italian": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very Italian",
           "note": "very Italian, quite innovative"
         },
@@ -289,7 +289,7 @@
           "note": "nicer than expected"
         },
         "italian": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very Italian",
           "note": "very Italian, no innovation"
         },
@@ -317,7 +317,7 @@
       "summary": "Went for dinner with Katie before heading to Jimmy's leaving party.",
       "fields": {
         "nice": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite nice",
           "note": "Quite nice"
         },
@@ -350,7 +350,7 @@
       "summary": "Shared four pizzas with the boys for Nixon's bday.",
       "fields": {
         "nice": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite nice",
           "note": "quite nice"
         },
@@ -392,12 +392,12 @@
       "summary": "Johnny's favourite pizza chain so had to try it.",
       "fields": {
         "nice": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite nice",
           "note": "quite nice"
         },
         "italian": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite Italian",
           "note": "quite Italian"
         },
@@ -423,7 +423,7 @@
       "summary": null,
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
@@ -456,12 +456,12 @@
       "summary": "Mine had no sauce but Katie's did and it was great.",
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
         "italian": {
-          "rating": 3,
+          "rating": 4,
           "label": "Quite Italian",
           "note": "quite Italian"
         },
@@ -489,7 +489,7 @@
       "summary": "Had the Margherita after a day of shopping and drinking with Katie.",
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
@@ -585,7 +585,7 @@
       "summary": "Went with Ceci, Stiffy, Tara, Johnny and Amy.",
       "fields": {
         "nice": {
-          "rating": 4,
+          "rating": 5,
           "label": "Very nice",
           "note": "very nice"
         },
