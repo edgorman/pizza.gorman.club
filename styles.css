@@ -83,6 +83,16 @@ body {
   box-shadow: 4px 4px 0 var(--color-text);
 }
 
+.brand-icon {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-text);
+  background: var(--color-bg);
+  object-fit: cover;
+}
+
 .brand {
   font-family: var(--font-heading);
   font-size: 21px;
@@ -518,6 +528,10 @@ body {
 }
 
 @media (max-width: 420px) {
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+  }
   .brand {
     font-size: 18px;
   }
