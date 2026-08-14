@@ -92,29 +92,31 @@ function toSpots(data) {
   }
 
   function ratingRow(letter, field) {
-    if (!field || typeof field.rating !== "number") return "";
+    const hasRating = field && typeof field.rating === "number";
+    const cls = hasRating ? "r" + field.rating : "no";
+    const text = hasRating ? field.label || "" : "none";
     return (
       '<div class="row"><div class="letter">' + letter + "</div>" +
-      '<span class="badge r' + field.rating + '">' + escapeHtml(field.label || "") + "</span></div>"
+      '<span class="badge ' + cls + '">' + escapeHtml(text) + "</span></div>"
     );
   }
 
   function theCsRow(theCs) {
-    if (!theCs || Object.keys(theCs).length === 0) return "";
-    const parts = Object.entries(theCs)
-      .map(([k, v]) => "<b>" + escapeHtml(k) + "</b> " + escapeHtml(v))
-      .join(" &middot; ");
-    return (
-      '<div class="row"><div class="letter">C</div><div class="the-cs">' + parts + "</div></div>"
-    );
+    if (!theCs || Object.keys(theCs).length === 0) {
+      return '<div class="row"><div class="letter">C</div><span class="badge no">none</span></div>';
+    }
+    const badges = Object.entries(theCs)
+      .map(([k, v]) => '<span class="badge cs"><b>' + escapeHtml(k) + ":</b> " + escapeHtml(v) + "</span>")
+      .join("");
+    return '<div class="row"><div class="letter">C</div><div class="cs-badges">' + badges + "</div></div>";
   }
 
   function edRow(edFactor) {
-    if (!edFactor) return "";
-    const cls = edFactor.status === "confirmed" ? "yes" : edFactor.status === "unconfirmed" ? "partial" : "no";
+    const cls = !edFactor ? "no" : edFactor.status === "confirmed" ? "yes" : edFactor.status === "unconfirmed" ? "partial" : "no";
+    const text = edFactor ? edFactor.status : "none";
     return (
       '<div class="row"><div class="letter">E</div>' +
-      '<span class="badge ' + cls + '">' + escapeHtml(edFactor.status) + "</span></div>"
+      '<span class="badge ' + cls + '">' + escapeHtml(text) + "</span></div>"
     );
   }
 
@@ -129,7 +131,7 @@ function toSpots(data) {
     if (s.kind === "totry") {
       return (
         close +
-        '<div class="p-top"><div class="p-kick totry">on the list</div>' +
+        '<div class="p-head"><div class="p-kick totry">on the list</div>' +
         '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
         '<div class="p-foot"><div class="p-date">unrated</div>' + mapsBtn + "</div>"
       );
@@ -140,22 +142,24 @@ function toSpots(data) {
       : "";
     const summaryHtml = s.summary ? '<p class="p-review">' + escapeHtml(s.summary) + "</p>" : "";
     const fields = s.fields;
-    const niceRows = fields
-      ? ratingRow("N", fields.nice) + ratingRow("I", fields.italian) + theCsRow(fields.theCs) + edRow(fields.edFactor)
-      : "";
+    const niceRows =
+      ratingRow("N", fields && fields.nice) +
+      ratingRow("I", fields && fields.italian) +
+      theCsRow(fields && fields.theCs) +
+      edRow(fields && fields.edFactor);
 
     return (
       close +
       scoreHtml +
-      '<div class="p-top' + (scoreHtml ? " has-score" : "") + '"><div class="p-kick">eaten &amp; rated</div>' +
+      '<div class="p-head' + (scoreHtml ? " has-score" : "") + '">' +
+      '<div class="p-top"><div class="p-kick">eaten &amp; rated</div>' +
       '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
       summaryHtml +
-      (niceRows ? '<div class="nice">' + niceRows + "</div>" : "") +
-      '<div class="p-foot' + (niceRows ? " with-key" : "") + '">' +
-      (niceRows
-        ? '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
-          "<b>E</b> ed factor: did I shake a hand while holding a slice</div>"
-        : "") +
+      "</div>" +
+      '<div class="nice">' + niceRows + "</div>" +
+      '<div class="p-foot with-key">' +
+      '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
+      "<b>E</b> ed factor: did I shake a hand while holding a slice</div>" +
       mapsBtn +
       "</div>"
     );

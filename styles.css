@@ -284,11 +284,11 @@ body {
   transform: scale(1);
 }
 
-.p-top {
+.p-head {
   padding-right: var(--space-2);
 }
 
-.p-top.has-score {
+.p-head.has-score {
   padding-right: 76px;
 }
 
@@ -397,19 +397,10 @@ body {
   justify-self: start;
 }
 
-.the-cs {
-  grid-column: 2;
-  font-size: 11.5px;
-  line-height: 1.35;
-  margin-top: 3px;
-  color: var(--color-neutral-700);
-}
-
-.the-cs b {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  color: var(--color-neutral-800);
-  text-transform: capitalize;
+.cs-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .badge {
@@ -432,6 +423,20 @@ body {
 .badge.no {
   background: var(--color-neutral-200);
   color: var(--color-neutral-700);
+}
+
+.badge.cs {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.badge.cs b {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-neutral-800);
+  text-transform: capitalize;
 }
 
 /* rating badges (N / I): colour-coded from muted (low) to green (high) */

@@ -89,7 +89,7 @@
       "required": ["rating", "label", "note"],
       "properties": {
         "rating": {
-          "description": "1 (not at all) to 5 (extremely). Use null if it can't be judged on this scale.",
+          "description": "1 not, 2 kinda/not very, 3 plain (no qualifier), 4 quite, 5 very/extremely. Use null if it can't be judged on this scale.",
           "type": ["integer", "null"],
           "minimum": 1,
           "maximum": 5
