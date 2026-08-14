@@ -128,7 +128,7 @@
           "cost": "great"
         },
         "edFactor": {
-          "status": "unconfirmed",
+          "status": "none",
           "note": "no"
         }
       }
@@ -160,7 +160,7 @@
           "company": "great"
         },
         "edFactor": {
-          "status": "partial",
+          "status": "unconfirmed",
           "note": "probably happened but not verified"
         }
       }
@@ -234,7 +234,7 @@
           "company": "the best (Anson)"
         },
         "edFactor": {
-          "status": "partial",
+          "status": "unconfirmed",
           "note": "confirmed but not verified"
         }
       }
@@ -406,7 +406,7 @@
           "cheese": "none (pizza had no cheese, was spicy)"
         },
         "edFactor": {
-          "status": "unknown",
+          "status": "none",
           "note": "none recorded"
         }
       }
@@ -439,7 +439,7 @@
           "cost": "amazing, they gave us free drinks"
         },
         "edFactor": {
-          "status": "partial",
+          "status": "confirmed",
           "note": "confirmed but not emphatic"
         }
       }
@@ -472,7 +472,7 @@
           "crust": "very good crunch"
         },
         "edFactor": {
-          "status": "partial",
+          "status": "unconfirmed",
           "note": "partial confirmation and verified"
         }
       }
@@ -538,7 +538,7 @@
           "company": "none, but good weather"
         },
         "edFactor": {
-          "status": "unconfirmed",
+          "status": "none",
           "note": "no, too distracted trying to hold the pizza up"
         }
       }
@@ -568,7 +568,7 @@
           "company": "none"
         },
         "edFactor": {
-          "status": "unconfirmed",
+          "status": "none",
           "note": "no"
         }
       }
@@ -600,7 +600,7 @@
           "cheese": "good amount"
         },
         "edFactor": {
-          "status": "partial",
+          "status": "unconfirmed",
           "note": "confirmed but not verified"
         }
       }

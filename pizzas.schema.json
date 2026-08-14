@@ -68,8 +68,9 @@
               "required": ["status", "note"],
               "properties": {
                 "status": {
+                  "description": "confirmed = definitely happened; unconfirmed = might have, not verified either way; none = explicitly did not happen (or nothing recorded).",
                   "type": "string",
-                  "enum": ["confirmed", "partial", "unconfirmed", "unknown"]
+                  "enum": ["confirmed", "unconfirmed", "none"]
                 },
                 "note": { "type": ["string", "null"] }
               }

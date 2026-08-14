@@ -44,7 +44,7 @@ A place only shows up as a pin once both `lat` and `lng` are set — leave them 
 
 - `nice` / `italian` — a 1 (not at all) to 5 (extremely) rating with a short text `label`. Leave `rating`/`label` as `null` if it doesn't fit the scale (e.g. the note wasn't really about niceness or Italian-ness).
 - `theCs` — only include the crust/cheese/cost/company keys that were actually mentioned.
-- `edFactor.status` — one of `confirmed`, `partial`, `unconfirmed`, `unknown`.
+- `edFactor.status` — one of `confirmed` (definitely happened), `unconfirmed` (might have, not verified either way), or `none` (explicitly did not happen, or nothing recorded).
 - Haven't rated a visited place yet? Set `overallRating`, `summary`, and/or `fields` to `null` — it'll still show up on the map (as an "eaten" pin marked `?`) once it has coordinates.
 
 No build step — just edit the JSON, commit, and push. GitHub Pages serves the static files directly. Leaflet is vendored in `vendor/leaflet/` (no CDN dependency); map tiles come from OpenStreetMap and Caprasimo/Figtree fonts from Google Fonts at runtime.
