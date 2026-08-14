@@ -132,7 +132,7 @@ function toSpots(data) {
     if (s.kind === "totry") {
       return (
         close +
-        '<div class="p-top"><div class="p-kick totry">on the list</div>' +
+        '<div class="p-head"><div class="p-kick totry">on the list</div>' +
         '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
         '<div class="p-foot"><div class="p-date">unrated</div>' + mapsBtn + "</div>"
       );
@@ -150,9 +150,11 @@ function toSpots(data) {
     return (
       close +
       scoreHtml +
-      '<div class="p-top' + (scoreHtml ? " has-score" : "") + '"><div class="p-kick">eaten &amp; rated</div>' +
+      '<div class="p-head' + (scoreHtml ? " has-score" : "") + '">' +
+      '<div class="p-top"><div class="p-kick">eaten &amp; rated</div>' +
       '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
       summaryHtml +
+      "</div>" +
       (niceRows ? '<div class="nice">' + niceRows + "</div>" : "") +
       '<div class="p-foot' + (niceRows ? " with-key" : "") + '">' +
       (niceRows

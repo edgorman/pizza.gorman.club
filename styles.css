@@ -284,11 +284,11 @@ body {
   transform: scale(1);
 }
 
-.p-top {
+.p-head {
   padding-right: var(--space-2);
 }
 
-.p-top.has-score {
+.p-head.has-score {
   padding-right: 76px;
 }
 
