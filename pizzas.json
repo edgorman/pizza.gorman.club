@@ -724,20 +724,20 @@
     {
       "name": "Vincenzo's Pizza",
       "googleMapsLink": "https://www.google.com/maps/place/Vincenzo's+Pizza/data=!4m2!3m1!1s0x48766b8191d40157:0xdef3136928ec546e",
-      "lat": null,
-      "lng": null
+      "lat": 51.5262793,
+      "lng": -0.0601426
     },
     {
       "name": "Heist Bank",
       "googleMapsLink": "https://www.google.com/maps/place/Heist+Bank/data=!4m2!3m1!1s0x48761ab23fb82b9d:0x37a776cbee19b92f",
-      "lat": null,
-      "lng": null
+      "lat": 51.5199653,
+      "lng": -0.1772635
     },
     {
       "name": "Vapiano Paddington",
       "googleMapsLink": "https://www.google.com/maps/place/Vapiano+Paddington/data=!4m2!3m1!1s0x48761bb25532fd6b:0x49a38a73c98c2e6a",
-      "lat": null,
-      "lng": null
+      "lat": 51.5170313,
+      "lng": -0.1780517
     },
     {
       "name": "Yard Sale Pizza",
@@ -748,116 +748,116 @@
     {
       "name": "Sodo Pizza Bethnal Green",
       "googleMapsLink": "https://www.google.com/maps/place/Sodo+Pizza+Bethnal+Green/data=!4m2!3m1!1s0x48761cdb6c2decbd:0x47346bbb5be1781d",
-      "lat": null,
-      "lng": null
+      "lat": 51.525546,
+      "lng": -0.058379
     },
     {
       "name": "Theo's",
       "googleMapsLink": "https://www.google.com/maps/place/Theo's/data=!4m2!3m1!1s0x487605767781eb9d:0x69a1a8cf49713baa",
-      "lat": null,
-      "lng": null
+      "lat": 51.4939798,
+      "lng": -0.1009841
     },
     {
       "name": "L'Antica Pizzeria",
       "googleMapsLink": "https://www.google.com/maps/place/L'Antica+Pizzeria/data=!4m2!3m1!1s0x48761a7d671ba309:0x7ab51afefd3b3ceb",
-      "lat": null,
-      "lng": null
+      "lat": 51.5583344,
+      "lng": -0.1783457
     },
     {
       "name": "ICCO - \"The People's Pizzeria\"",
       "googleMapsLink": "https://www.google.com/maps/place/ICCO+-+%22The+People's+Pizzeria%22/data=!4m2!3m1!1s0x48761b2befd0a035:0x52ca535577a32e0f",
-      "lat": null,
-      "lng": null
+      "lat": 51.5190987,
+      "lng": -0.1373516
     },
     {
       "name": "The Pembury Tavern",
       "googleMapsLink": "https://www.google.com/maps/place/The+Pembury+Tavern/data=!4m2!3m1!1s0x48761cf0860484a1:0xe803cba83bf7bc42",
-      "lat": null,
-      "lng": null
+      "lat": 51.5492468,
+      "lng": -0.0560295
     },
     {
       "name": "Cinquecento Haverstock Hill",
       "googleMapsLink": "https://www.google.com/maps/place/Cinquecento+Haverstock+Hill/data=!4m2!3m1!1s0x48761bce7d1d6cd1:0xb8779915a387102f",
-      "lat": null,
-      "lng": null
+      "lat": 51.5458055,
+      "lng": -0.1583091
     },
     {
       "name": "East West",
       "googleMapsLink": "https://www.google.com/maps/place/East+West/data=!4m2!3m1!1s0x48761b819f4ed34b:0xb7c16867f51b82de",
-      "lat": null,
-      "lng": null
+      "lat": 51.5284307,
+      "lng": -0.0768228
     },
     {
       "name": "Ria's",
       "googleMapsLink": "https://www.google.com/maps/place/Ria's/data=!4m2!3m1!1s0x487611c8842cff15:0xa6ab6703fef50896",
-      "lat": null,
-      "lng": null
+      "lat": 51.5186005,
+      "lng": -0.2057989
     },
     {
       "name": "World Famous Gordos",
       "googleMapsLink": "https://www.google.com/maps/place/World+Famous+Gordos/data=!4m2!3m1!1s0x48761d53cefad50d:0xe564ada310310a47",
-      "lat": null,
-      "lng": null
+      "lat": 51.536968,
+      "lng": -0.0577903
     },
     {
       "name": "Napoli on the Road Chiswick",
       "googleMapsLink": "https://www.google.com/maps/place/Napoli+on+the+Road+Chiswick/data=!4m2!3m1!1s0x48760f950ced1ba5:0x7d822731123fe241",
-      "lat": null,
-      "lng": null
+      "lat": 51.4925725,
+      "lng": -0.2562479
     },
     {
       "name": "Vicoli di Napoli Pizzeria",
       "googleMapsLink": "https://www.google.com/maps/place/Vicoli+di+Napoli+Pizzeria/data=!4m2!3m1!1s0x48761c6366ae38dd:0x6ae522db79a1ace9",
-      "lat": null,
-      "lng": null
+      "lat": 51.5606622,
+      "lng": -0.0818784
     },
     {
       "name": "Fatto Pizza & Beer",
       "googleMapsLink": "https://www.google.com/maps/place/Fatto+Pizza+%26+Beer/data=!4m2!3m1!1s0x48761bc720b97f8d:0x866cb9405778a7d1",
-      "lat": null,
-      "lng": null
+      "lat": 51.5269788,
+      "lng": -0.0592965
     },
     {
       "name": "SACRO DOUGH PIZZERIA NAPOLETANA",
       "googleMapsLink": "https://www.google.com/maps/place/SACRO+DOUGH+PIZZERIA+NAPOLETANA/data=!4m2!3m1!1s0x487611708136b6fb:0x82606aac6070729a",
-      "lat": null,
-      "lng": null
+      "lat": 51.5518428,
+      "lng": -0.1915998
     },
     {
       "name": "Farina Pizzeria Napoletana",
       "googleMapsLink": "https://www.google.com/maps/place/Farina+Pizzeria+Napoletana/data=!4m2!3m1!1s0x48760ffb417977af:0xe2681014e1f94c01",
-      "lat": null,
-      "lng": null
+      "lat": 51.5090124,
+      "lng": -0.196944
     },
     {
       "name": "Bar Remo",
       "googleMapsLink": "https://www.google.com/maps/place/Bar+Remo/data=!4m2!3m1!1s0x487603555cc8a5cd:0x79ff0e55cc21674b",
-      "lat": null,
-      "lng": null
+      "lat": 51.514705,
+      "lng": -0.141566
     },
     {
       "name": "Joe Public",
       "googleMapsLink": "https://www.google.com/maps/place/Joe+Public/data=!4m2!3m1!1s0x4876044d7abac521:0x434725714c4f3a54",
-      "lat": null,
-      "lng": null
+      "lat": 51.462319,
+      "lng": -0.13876
     },
     {
       "name": "Mimmo La Bufala",
       "googleMapsLink": "https://www.google.com/maps/place/Mimmo+La+Bufala/data=!4m2!3m1!1s0x48761a8aebded54f:0xe2f91c4637acc2eb",
-      "lat": null,
-      "lng": null
+      "lat": 51.554201,
+      "lng": -0.1659972
     },
     {
       "name": "Four Hundred Rabbits Pizza Restaurant Elephant And Castle",
       "googleMapsLink": "https://www.google.com/maps/place/Four+Hundred+Rabbits+Pizza+Restaurant+Elephant+And+Castle/data=!4m2!3m1!1s0x48760518a3416755:0x4e82be983d0f46eb",
-      "lat": null,
-      "lng": null
+      "lat": 51.4912959,
+      "lng": -0.0988673
     },
     {
       "name": "Santa Maria Pizzeria Fitzrovia",
       "googleMapsLink": "https://www.google.com/maps/place/Santa+Maria+Pizzeria+Fitzrovia/data=!4m2!3m1!1s0x48761b298c9837b7:0x8d5d25a6944f1568",
-      "lat": null,
-      "lng": null
+      "lat": 51.5204223,
+      "lng": -0.1413813
     },
     {
       "name": "Yard Sale Pizza",
@@ -868,20 +868,20 @@
     {
       "name": "Berberè Clapham",
       "googleMapsLink": "https://www.google.com/maps/place/Berber%C3%A8+Clapham/data=!4m2!3m1!1s0x4876045280dde461:0xa7f24e4c455f5505",
-      "lat": null,
-      "lng": null
+      "lat": 51.462215,
+      "lng": -0.1396825
     },
     {
       "name": "The Chancellors",
       "googleMapsLink": "https://www.google.com/maps/place/The+Chancellors/data=!4m2!3m1!1s0x48760fb6cc58ee93:0x717c63a70819eb6c",
-      "lat": null,
-      "lng": null
+      "lat": 51.4878078,
+      "lng": -0.2285191
     },
     {
       "name": "Sud Italia",
       "googleMapsLink": "https://www.google.com/maps/place/Sud+Italia/data=!4m2!3m1!1s0x48761cb41e806cd5:0x2eb2b16a7c08c7af",
-      "lat": null,
-      "lng": null
+      "lat": 51.519391,
+      "lng": -0.075416
     }
   ]
 }
