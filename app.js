@@ -1,41 +1,4 @@
-async function loadData() {
-  const res = await fetch("pizzas.json");
-  if (!res.ok) throw new Error(`Failed to load pizzas.json: ${res.status}`);
-  return res.json();
-}
-
-function normalizedScore(overallRating) {
-  if (!overallRating || !overallRating.outOf) return -1;
-  return (overallRating.score / overallRating.outOf) * 10;
-}
-
-function ratingBadge(overallRating) {
-  if (!overallRating) return `<span class="rating-badge unrated">Not yet rated</span>`;
-  return `<span class="rating-badge">${overallRating.score}/${overallRating.outOf}</span>`;
-}
-
-function theCsList(theCs) {
-  if (!theCs || Object.keys(theCs).length === 0) return "";
-  const rows = Object.entries(theCs)
-    .map(([k, v]) => `<dt>${k}</dt><dd>${escapeHtml(v)}</dd>`)
-    .join("");
-  return `<div class="the-cs"><strong>The C's</strong><dl>${rows}</dl></div>`;
-}
-
-function chips(fields) {
-  if (!fields) return "";
-  const out = [];
-  if (fields.nice && fields.nice.label) {
-    out.push(`<span class="chip">Nice: ${escapeHtml(fields.nice.label)}</span>`);
-  }
-  if (fields.italian && fields.italian.label) {
-    out.push(`<span class="chip italian">Italian-ness: ${escapeHtml(fields.italian.label)}</span>`);
-  }
-  if (fields.edFactor && fields.edFactor.status) {
-    out.push(`<span class="chip ed">Ed factor: ${escapeHtml(fields.edFactor.status)}</span>`);
-  }
-  return out.length ? `<div class="chips">${out.join("")}</div>` : "";
-}
+const LONDON_CENTER = [51.509, -0.095];
 
 function escapeHtml(str) {
   return String(str)
@@ -45,76 +8,260 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
-function visitedCard(place) {
-  const summary = place.summary ? `<p class="summary">${escapeHtml(place.summary)}</p>` : "";
-  return `
-    <div class="card">
-      <div class="card-head">
-        <a href="${place.googleMapsLink}" target="_blank" rel="noopener">${escapeHtml(place.name)}</a>
-        ${ratingBadge(place.overallRating)}
-      </div>
-      ${summary}
-      ${chips(place.fields)}
-      ${theCsList(place.fields && place.fields.theCs)}
-    </div>
-  `;
+function hasCoords(place) {
+  return typeof place.lat === "number" && typeof place.lng === "number";
 }
 
-function wishlistCard(place) {
-  return `
-    <div class="card">
-      <a href="${place.googleMapsLink}" target="_blank" rel="noopener">${escapeHtml(place.name)}</a>
-    </div>
-  `;
-}
-
-function render(data, tab, query) {
-  const main = document.getElementById("main");
-  const q = query.trim().toLowerCase();
-
-  if (tab === "visited") {
-    const items = data.visited
-      .filter((p) => p.name.toLowerCase().includes(q))
-      .sort((a, b) => normalizedScore(b.overallRating) - normalizedScore(a.overallRating));
-    document.getElementById("count").textContent = `${items.length} place${items.length === 1 ? "" : "s"}`;
-    main.innerHTML = items.length
-      ? `<div class="grid">${items.map(visitedCard).join("")}</div>`
-      : `<p class="empty">No pizza places match "${escapeHtml(query)}".</p>`;
-  } else {
-    const items = data.wishlist.filter((p) => p.name.toLowerCase().includes(q));
-    document.getElementById("count").textContent = `${items.length} place${items.length === 1 ? "" : "s"}`;
-    main.innerHTML = items.length
-      ? `<div class="wishlist-grid">${items.map(wishlistCard).join("")}</div>`
-      : `<p class="empty">No pizza places match "${escapeHtml(query)}".</p>`;
-  }
+function toSpots(data) {
+  const eaten = data.visited.map((p) => ({
+    id: "v:" + p.name,
+    kind: "eaten",
+    name: p.name,
+    ll: hasCoords(p) ? [p.lat, p.lng] : null,
+    googleMapsLink: p.googleMapsLink,
+    overallRating: p.overallRating,
+    summary: p.summary,
+    fields: p.fields,
+  }));
+  const totry = data.wishlist.map((p) => ({
+    id: "w:" + p.name,
+    kind: "totry",
+    name: p.name,
+    ll: hasCoords(p) ? [p.lat, p.lng] : null,
+    googleMapsLink: p.googleMapsLink,
+  }));
+  return eaten.concat(totry);
 }
 
 (async function init() {
-  let data;
-  try {
-    data = await loadData();
-  } catch (err) {
-    document.getElementById("main").innerHTML = `<p class="empty">Could not load pizzas.json: ${escapeHtml(err.message)}</p>`;
-    return;
+  const res = await fetch("pizzas.json");
+  const data = await res.json();
+  const SPOTS = toSpots(data);
+  const plottable = SPOTS.filter((s) => s.ll);
+  const missing = SPOTS.length - plottable.length;
+
+  const geoHint = document.getElementById("geoHint");
+  if (missing > 0) {
+    geoHint.hidden = false;
+    geoHint.innerHTML =
+      missing === SPOTS.length
+        ? "No places have coordinates yet. Add <code>lat</code>/<code>lng</code> to entries in <a href=\"pizzas.json\">pizzas.json</a> to see them on the map."
+        : missing + " place" + (missing === 1 ? "" : "s") + " still need" + (missing === 1 ? "s" : "") + " coordinates in <a href=\"pizzas.json\">pizzas.json</a>.";
   }
 
-  let tab = "visited";
-  const search = document.getElementById("search");
+  const map = L.map("map", {
+    zoomControl: false,
+    attributionControl: true,
+    maxZoom: 18,
+    minZoom: 10,
+  }).setView(LONDON_CENTER, 12);
 
-  function rerender() {
-    render(data, tab, search.value);
-  }
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+    maxZoom: 19,
+  }).addTo(map);
 
-  document.querySelectorAll(".tab-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      tab = btn.dataset.tab;
-      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
-      search.placeholder = tab === "visited" ? "Search visited pizzerias…" : "Search the wishlist…";
-      rerender();
+  const markers = {};
+  const panel = document.getElementById("panel");
+  let openId = null;
+
+  function makeIcon(s) {
+    const label = s.kind === "eaten" && s.overallRating ? s.overallRating.score.toFixed(1) : "?";
+    return L.divIcon({
+      className: "",
+      html:
+        '<div class="pin ' + s.kind + '" data-id="' + escapeHtml(s.id) + '"><i class="stem"></i>' +
+        '<div class="dot">' + escapeHtml(label) + "</div></div>",
+      iconSize: [36, 48],
+      iconAnchor: [18, 48],
     });
+  }
+
+  plottable.forEach((s) => {
+    const m = L.marker(s.ll, { icon: makeIcon(s), title: s.name, riseOnHover: true, keyboard: true }).addTo(map);
+    m.on("click", () => openSpot(s.id));
+    m.on("keypress", () => openSpot(s.id));
+    markers[s.id] = m;
   });
 
-  search.addEventListener("input", rerender);
+  function pinEl(id) {
+    const marker = markers[id];
+    if (!marker) return null;
+    const el = marker.getElement();
+    return el ? el.querySelector(".pin") : null;
+  }
 
-  rerender();
+  function ratingRow(letter, field) {
+    if (!field || typeof field.rating !== "number") return "";
+    return (
+      '<div class="row"><div class="letter">' + letter + "</div>" +
+      '<div class="track"><div class="fill" style="width:' + (field.rating / 5 * 100) + '%"></div></div>' +
+      '<div class="word">' + escapeHtml(field.label || "") + "</div></div>"
+    );
+  }
+
+  function theCsRow(theCs) {
+    if (!theCs || Object.keys(theCs).length === 0) return "";
+    const parts = Object.entries(theCs)
+      .map(([k, v]) => "<b>" + escapeHtml(k) + "</b> " + escapeHtml(v))
+      .join(" &middot; ");
+    return (
+      '<div class="row"><div class="letter">C</div><div class="the-cs">' + parts + "</div></div>"
+    );
+  }
+
+  function edRow(edFactor) {
+    if (!edFactor) return "";
+    const cls = edFactor.status === "confirmed" ? "yes" : edFactor.status === "partial" ? "partial" : "no";
+    const text = edFactor.status === "confirmed" ? "handshake secured" : edFactor.status === "partial" ? "partial handshake" : "no handshake";
+    return (
+      '<div class="row"><div class="letter">E</div><div class="ed"><span class="badge ' + cls + '">' +
+      escapeHtml(text) + "</span></div></div>"
+    );
+  }
+
+  function panelHTML(s) {
+    const close =
+      '<button class="close" type="button" id="closeBtn" aria-label="close">' +
+      '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+    const mapsBtn =
+      '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">google maps' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
+
+    if (s.kind === "totry") {
+      return (
+        close +
+        '<div class="p-top"><div><div class="p-kick totry">on the list</div>' +
+        '<div class="p-name">' + escapeHtml(s.name) + "</div>" +
+        '<div class="p-where">not been yet</div></div></div>' +
+        '<div class="p-foot"><div class="p-date">unrated</div>' + mapsBtn + "</div>"
+      );
+    }
+
+    const scoreHtml = s.overallRating
+      ? '<div class="score">' + s.overallRating.score + '<span>/' + s.overallRating.outOf + "</span></div>"
+      : "";
+    const summaryHtml = s.summary ? '<p class="p-review">' + escapeHtml(s.summary) + "</p>" : "";
+    const fields = s.fields;
+    const niceRows = fields
+      ? ratingRow("N", fields.nice) + ratingRow("I", fields.italian) + theCsRow(fields.theCs) + edRow(fields.edFactor)
+      : "";
+
+    return (
+      close +
+      '<div class="p-top"><div><div class="p-kick">eaten &amp; rated</div>' +
+      '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
+      scoreHtml +
+      "</div>" +
+      summaryHtml +
+      (niceRows ? '<div class="nice">' + niceRows + "</div>" : "") +
+      (niceRows
+        ? '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
+          "<b>E</b> ed factor: did I shake a hand while holding a slice</div>"
+        : "") +
+      '<div class="p-foot"><div class="p-date"></div>' + mapsBtn + "</div>"
+    );
+  }
+
+  function place(s) {
+    const pt = map.latLngToContainerPoint(s.ll);
+    const rect = map.getContainer().getBoundingClientRect();
+    const px = rect.left + pt.x;
+    const py = rect.top + pt.y - 46;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const w = panel.offsetWidth;
+    const h = panel.offsetHeight;
+
+    let x = Math.min(Math.max(12, px - w / 2), vw - w - 12);
+    let y = py - h - 16;
+    if (y < 74) y = Math.min(py + 60, vh - h - 96);
+    y = Math.max(y, 12);
+
+    panel.style.left = x + "px";
+    panel.style.top = y + "px";
+    panel.style.transformOrigin = px - x + "px " + (py - y) + "px";
+  }
+
+  function openSpot(id) {
+    const s = plottable.find((v) => v.id === id);
+    if (!s) return;
+    if (openId === id) {
+      closePanel();
+      return;
+    }
+    closePanel(true);
+    openId = id;
+    const p = pinEl(id);
+    if (p) p.classList.add("on");
+    panel.innerHTML = panelHTML(s);
+    panel.classList.remove("open");
+    panel.style.visibility = "hidden";
+
+    const target = map.project(s.ll, map.getZoom());
+    const size = map.getSize();
+    const wantY = size.y * (window.innerHeight < 620 ? 0.62 : 0.66);
+    const center = map.unproject([target.x, target.y - (wantY - size.y / 2)], map.getZoom());
+    map.panTo(center, { animate: true, duration: 0.35 });
+
+    setTimeout(() => {
+      panel.style.visibility = "";
+      place(s);
+      requestAnimationFrame(() => panel.classList.add("open"));
+    }, 380);
+  }
+
+  function closePanel(silent) {
+    if (openId != null) {
+      const p = pinEl(openId);
+      if (p) p.classList.remove("on");
+    }
+    openId = null;
+    panel.classList.remove("open");
+    if (!silent) updateCount();
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("#closeBtn")) {
+      closePanel();
+      return;
+    }
+    if (e.target.closest("#panel") || e.target.closest(".pin") || e.target.closest(".filters") || e.target.closest(".bar")) return;
+    closePanel();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePanel();
+  });
+  map.on("movestart zoomstart", () => {
+    if (panel.classList.contains("open")) closePanel();
+  });
+  window.addEventListener("resize", () => closePanel());
+
+  /* ── filtering ─────────────────────────────────────────────── */
+  let filter = "all";
+  const buttons = [...document.querySelectorAll("#filters button")];
+
+  function updateCount() {
+    const eaten = SPOTS.filter((s) => s.kind === "eaten").length;
+    const totry = SPOTS.length - eaten;
+    const el = document.getElementById("count");
+    el.textContent =
+      filter === "eaten" ? eaten + " eaten" : filter === "totry" ? totry + " to try" : eaten + " eaten · " + totry + " to try";
+  }
+
+  function applyFilter(f) {
+    filter = f;
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+    plottable.forEach((s) => {
+      const show = f === "all" || s.kind === f;
+      const m = markers[s.id];
+      if (show && !map.hasLayer(m)) m.addTo(map);
+      if (!show && map.hasLayer(m)) map.removeLayer(m);
+    });
+    closePanel(true);
+    updateCount();
+  }
+
+  buttons.forEach((b) => b.addEventListener("click", () => applyFilter(b.dataset.f)));
+  updateCount();
 })();

@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>ed's slice of life</title>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>🍕 ed's slice of life</h1>
-    <p>A running log of London pizza, rated on the NICE system.</p>
+  <div id="map"></div>
+
+  <header class="bar">
+    <h1 class="brand">ed's <em>slice</em> of life</h1>
+    <div class="count" id="count"></div>
   </header>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="visited">Been there</button>
-    <button class="tab-btn" data-tab="wishlist">Want to go</button>
-  </div>
+  <nav class="filters" id="filters" aria-label="filter pizza spots">
+    <button type="button" data-f="all" aria-pressed="true">everything</button>
+    <button type="button" data-f="eaten" aria-pressed="false"><i class="swatch eaten"></i>eaten</button>
+    <button type="button" data-f="totry" aria-pressed="false"><i class="swatch totry"></i>to try</button>
+  </nav>
 
-  <div class="controls">
-    <input id="search" type="search" placeholder="Search visited pizzerias…" />
-    <span id="count" class="count"></span>
-  </div>
+  <div class="geo-hint" id="geoHint" hidden></div>
 
-  <main id="main"></main>
+  <section id="panel" role="dialog" aria-modal="false" aria-label="pizza spot details"></section>
 
-  <footer>
-    Data lives in <a href="pizzas.json">pizzas.json</a> — edit it to add new places.
-  </footer>
-
+  <script src="vendor/leaflet/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

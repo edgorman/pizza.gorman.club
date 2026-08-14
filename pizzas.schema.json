@@ -16,19 +16,23 @@
   "definitions": {
     "wishlistPlace": {
       "type": "object",
-      "required": ["name", "googleMapsLink"],
+      "required": ["name", "googleMapsLink", "lat", "lng"],
       "properties": {
         "name": { "type": "string" },
-        "googleMapsLink": { "type": "string", "format": "uri" }
+        "googleMapsLink": { "type": "string", "format": "uri" },
+        "lat": { "$ref": "#/definitions/coordinate" },
+        "lng": { "$ref": "#/definitions/coordinate" }
       },
       "additionalProperties": false
     },
     "visitedPlace": {
       "type": "object",
-      "required": ["name", "googleMapsLink", "overallRating", "summary", "fields"],
+      "required": ["name", "googleMapsLink", "lat", "lng", "overallRating", "summary", "fields"],
       "properties": {
         "name": { "type": "string" },
         "googleMapsLink": { "type": "string", "format": "uri" },
+        "lat": { "$ref": "#/definitions/coordinate" },
+        "lng": { "$ref": "#/definitions/coordinate" },
         "overallRating": {
           "description": "Score out of a scale, e.g. 8/10 or 4/5. Use null if not yet rated.",
           "type": ["object", "null"],
@@ -74,6 +78,10 @@
         }
       },
       "additionalProperties": false
+    },
+    "coordinate": {
+      "description": "Latitude or longitude. Use null until you've looked it up (open the googleMapsLink, the URL bar / share link will show it) — the place won't appear on the map until both lat and lng are set.",
+      "type": ["number", "null"]
     },
     "ratingField": {
       "type": "object",

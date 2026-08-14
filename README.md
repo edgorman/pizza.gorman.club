@@ -1,6 +1,6 @@
 # pizza.gorman.club
 
-A running log of London pizza places, rendered by `index.html` / `app.js` / `styles.css` from a single data file: `pizzas.json`.
+A map of London pizza places (`index.html` / `app.js` / `styles.css`, using Leaflet), rendered from a single data file: `pizzas.json`.
 
 ## Adding a place
 
@@ -9,7 +9,7 @@ Edit `pizzas.json` directly (it's validated by `pizzas.schema.json`, so most edi
 **Want to try it, haven't been yet** — add to `wishlist`:
 
 ```json
-{ "name": "Place Name", "googleMapsLink": "https://www.google.com/maps/place/..." }
+{ "name": "Place Name", "googleMapsLink": "https://www.google.com/maps/place/...", "lat": null, "lng": null }
 ```
 
 **Already been** — add to `visited`:
@@ -18,6 +18,8 @@ Edit `pizzas.json` directly (it's validated by `pizzas.schema.json`, so most edi
 {
   "name": "Place Name",
   "googleMapsLink": "https://www.google.com/maps/place/...",
+  "lat": null,
+  "lng": null,
   "overallRating": { "score": 8, "outOf": 10 },
   "summary": "One line about the visit.",
   "fields": {
@@ -34,11 +36,15 @@ Edit `pizzas.json` directly (it's validated by `pizzas.schema.json`, so most edi
 }
 ```
 
-Rules of thumb:
+## Coordinates
+
+A place only shows up as a pin once both `lat` and `lng` are set — leave them `null` and it stays off the map (the banner at the top of the page counts how many are still missing). To find them: open `googleMapsLink`, right-click the pin on google.com/maps and click the lat/lng shown at the top of the context menu (or check the URL after it centers on the place — it looks like `.../@51.5225,-0.1155,17z/...`), then copy those two numbers in as `lat`, `lng`.
+
+## Other rules of thumb
 
 - `nice` / `italian` — a 1 (not at all) to 5 (extremely) rating with a short text `label`. Leave `rating`/`label` as `null` if it doesn't fit the scale (e.g. the note wasn't really about niceness or Italian-ness).
 - `theCs` — only include the crust/cheese/cost/company keys that were actually mentioned.
 - `edFactor.status` — one of `confirmed`, `partial`, `unconfirmed`, `unknown`.
-- Haven't rated it yet? Set `overallRating`, `summary`, and/or `fields` to `null`.
+- Haven't rated a visited place yet? Set `overallRating`, `summary`, and/or `fields` to `null` — it'll still show up on the map (as an "eaten" pin marked `?`) once it has coordinates.
 
-No build step — just edit the JSON, commit, and push. GitHub Pages serves the static files directly.
+No build step — just edit the JSON, commit, and push. GitHub Pages serves the static files directly. Leaflet is vendored in `vendor/leaflet/` (no CDN dependency); map tiles come from OpenStreetMap and Caprasimo/Figtree fonts from Google Fonts at runtime.
