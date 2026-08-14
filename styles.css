@@ -1,0 +1,268 @@
+:root {
+  --bg: #faf9f5;
+  --surface: #ffffff;
+  --border: #e8e3d8;
+  --text: #2b2620;
+  --text-muted: #6b6355;
+  --accent: #c0392b;
+  --accent-soft: #f3d9d4;
+  --basil: #4f7942;
+  --basil-soft: #dfe9da;
+  --cheese: #d99a2b;
+  --cheese-soft: #f6e6c8;
+  --shadow: 0 1px 3px rgba(43, 38, 32, 0.08), 0 1px 2px rgba(43, 38, 32, 0.06);
+  --radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1a16;
+    --surface: #26231d;
+    --border: #3a352c;
+    --text: #f2ede2;
+    --text-muted: #b3aa98;
+    --accent: #e8695c;
+    --accent-soft: #3d2622;
+    --basil: #8fbf7c;
+    --basil-soft: #2a3324;
+    --cheese: #f0b94d;
+    --cheese-soft: #3a2f18;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 20px 24px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 6px;
+  font-size: clamp(28px, 5vw, 40px);
+}
+
+header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.tabs {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tab-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.controls {
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#search {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+}
+
+#search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.count {
+  color: var(--text-muted);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 20px 64px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-head a {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card-head a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.rating-badge {
+  flex-shrink: 0;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.rating-badge.unrated {
+  background: var(--border);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.summary {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 14.5px;
+}
+
+.chips {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 13px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--basil-soft);
+  color: var(--basil);
+  border: 1px solid transparent;
+}
+
+.chip.italian {
+  background: var(--cheese-soft);
+  color: var(--cheese);
+}
+
+.chip.ed {
+  background: var(--border);
+  color: var(--text-muted);
+}
+
+.the-cs {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.the-cs strong {
+  color: var(--text);
+}
+
+.the-cs dl {
+  margin: 4px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 8px;
+}
+
+.the-cs dt {
+  text-transform: capitalize;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.the-cs dd {
+  margin: 0;
+}
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.wishlist-grid .card {
+  padding: 12px 16px;
+}
+
+.wishlist-grid a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.wishlist-grid a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 0 20px 40px;
+}

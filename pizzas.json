@@ -1,0 +1,757 @@
+{
+  "$schema": "./pizzas.schema.json",
+  "visited": [
+    {
+      "name": "Spring Street Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Spring+Street+Pizza/data=!4m2!3m1!1s0x487604a1bf2435bf:0xf2b5ffca3d6832f8",
+      "overallRating": {
+        "score": 9,
+        "outOf": 10
+      },
+      "summary": "Liked the nduja and pepperoni.",
+      "fields": {
+        "nice": {
+          "rating": 5,
+          "label": "Extremely nice",
+          "note": "very very nice, liked the nduja and pepperoni"
+        },
+        "italian": {
+          "rating": 1,
+          "label": "Not Italian",
+          "note": "not Italian, more New York style"
+        },
+        "theCs": {
+          "cheese": "okay",
+          "cost": "not great",
+          "crust": "amazing",
+          "company": "amazing"
+        },
+        "edFactor": {
+          "status": "confirmed",
+          "note": "confirmed and witnessed"
+        }
+      }
+    },
+    {
+      "name": "Breadstall Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Breadstall+Pizza/data=!4m2!3m1!1s0x487605e4651e6389:0x1db3d4b2da5877bd",
+      "overallRating": null,
+      "summary": null,
+      "fields": null
+    },
+    {
+      "name": "sYp",
+      "googleMapsLink": "https://www.google.com/maps/place/sYp/data=!4m2!3m1!1s0x487603ead633610d:0x4b7cc8814ca57f30",
+      "overallRating": {
+        "score": 7,
+        "outOf": 10
+      },
+      "summary": "Good pizza and live jazz made it better.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Quite nice",
+          "note": "quite nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Not very Italian",
+          "note": "not very Italian (no tiramisu option) or innovative"
+        },
+        "theCs": {
+          "cost": "good cost for where it is, Wednesday had deals on whiskeys"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "not seen nor confirmed"
+        }
+      }
+    },
+    {
+      "name": "Eataly London",
+      "googleMapsLink": "https://www.google.com/maps/place/Eataly+London/data=!4m2!3m1!1s0x48761d5c5da428a7:0x1e1992afbd13c552",
+      "overallRating": {
+        "score": 6,
+        "outOf": 10
+      },
+      "summary": "First pizza to use the NICE rating system.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Nice",
+          "note": "nice"
+        },
+        "italian": {
+          "rating": 5,
+          "label": "Very authentic",
+          "note": "very authentic and fresh"
+        },
+        "theCs": {
+          "crust": "crispy",
+          "cost": "costly",
+          "cheese": "meh",
+          "company": "great"
+        },
+        "edFactor": {
+          "status": "confirmed",
+          "note": "confirmed hand shake"
+        }
+      }
+    },
+    {
+      "name": "Green Mosaic Pizza Cafe",
+      "googleMapsLink": "https://www.google.com/maps/place/Green+Mosaic+Pizza+Cafe/data=!4m2!3m1!1s0x48761b3d51875b73:0x193968a9868f5cb7",
+      "overallRating": null,
+      "summary": "Went for lunch, was good.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Nice",
+          "note": "nice"
+        },
+        "italian": {
+          "rating": 4,
+          "label": "Very Italian",
+          "note": "very Italian"
+        },
+        "theCs": {
+          "cost": "great"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "no"
+        }
+      }
+    },
+    {
+      "name": "50 Kalò di Ciro Salvo Pizzeria London",
+      "googleMapsLink": "https://www.google.com/maps/place/50+Kal%C3%B2+di+Ciro+Salvo+Pizzeria+London/data=!4m2!3m1!1s0x487605752288afef:0x9ad14700d0feb1e5",
+      "overallRating": {
+        "score": 4,
+        "outOf": 5
+      },
+      "summary": "Great tiramisu at the end.",
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": 5,
+          "label": "Extremely Italian",
+          "note": "extremely Italian"
+        },
+        "theCs": {
+          "cost": "quite expensive",
+          "cheese": "great",
+          "company": "great"
+        },
+        "edFactor": {
+          "status": "partial",
+          "note": "probably happened but not verified"
+        }
+      }
+    },
+    {
+      "name": "Three Colts Tavern",
+      "googleMapsLink": "https://www.google.com/maps/place/Three+Colts+Tavern/data=!4m2!3m1!1s0x48761d49dfc6ea77:0x73cb9210c8c84091",
+      "overallRating": {
+        "score": 8,
+        "outOf": 10
+      },
+      "summary": null,
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": 4,
+          "label": "Very Italian",
+          "note": "Very Italian, not very innovative"
+        },
+        "theCs": {
+          "crust": "might be one of my favourite crusts, good crunch",
+          "cost": "good (Callum paid for it)",
+          "company": "shite (jk)"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "not confirmed or verified"
+        }
+      }
+    },
+    {
+      "name": "Rudy's Pizza Napoletana - Soho",
+      "googleMapsLink": "https://www.google.com/maps/place/Rudy's+Pizza+Napoletana+-+Soho/data=!4m2!3m1!1s0x487605a360d78121:0x3f7f70e916e58eb9",
+      "overallRating": null,
+      "summary": "Forgot to save this.",
+      "fields": null
+    },
+    {
+      "name": "Alley Cats Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Alley+Cats+Pizza/data=!4m2!3m1!1s0x48761bcedb07d3a9:0xb6bf56d5a2d514af",
+      "overallRating": {
+        "score": 8.5,
+        "outOf": 10
+      },
+      "summary": null,
+      "fields": {
+        "nice": {
+          "rating": 5,
+          "label": "Extremely nice",
+          "note": "extremely nice"
+        },
+        "italian": {
+          "rating": 4,
+          "label": "Very Italian",
+          "note": "very Italian, quite innovative"
+        },
+        "theCs": {
+          "cheese": "okay",
+          "cost": "good",
+          "crust": "great",
+          "company": "the best (Anson)"
+        },
+        "edFactor": {
+          "status": "partial",
+          "note": "confirmed but not verified"
+        }
+      }
+    },
+    {
+      "name": "Detroit Pizza London",
+      "googleMapsLink": "https://www.google.com/maps/place/Detroit+Pizza+London/data=!4m2!3m1!1s0x487605dd74cb8b89:0xc9e6b7837e5f317",
+      "overallRating": {
+        "score": 9,
+        "outOf": 10
+      },
+      "summary": "Get the Detroit pizza, it's perfect.",
+      "fields": {
+        "nice": {
+          "rating": 5,
+          "label": "Extremely nice",
+          "note": "extremely nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Not very Italian",
+          "note": "not very Italian, fairly innovative with the honey"
+        },
+        "theCs": {
+          "cost": "good",
+          "cheese": "great",
+          "crust": "amazing",
+          "company": "fantastic"
+        },
+        "edFactor": {
+          "status": "confirmed",
+          "note": "confirmed on the first slice"
+        }
+      }
+    },
+    {
+      "name": "Regent's Bar & Kitchen",
+      "googleMapsLink": "https://www.google.com/maps/place/Regent's+Bar+%26+Kitchen/data=!4m2!3m1!1s0x48761ac50934a351:0xb5d29ad5c52fe83d",
+      "overallRating": {
+        "score": 7,
+        "outOf": 10
+      },
+      "summary": "Went here after running a half marathon, got the Margherita.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Nicer than expected",
+          "note": "nicer than expected"
+        },
+        "italian": {
+          "rating": 4,
+          "label": "Very Italian",
+          "note": "very Italian, no innovation"
+        },
+        "theCs": {
+          "crust": "great",
+          "cheese": "okay",
+          "cost": "meh",
+          "company": "none (Adam joined post pizza)"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "not confirmed or validated"
+        }
+      }
+    },
+    {
+      "name": "Crust Bros Pizza Restaurant Waterloo",
+      "googleMapsLink": "https://www.google.com/maps/place/Crust+Bros+Pizza+Restaurant+Waterloo/data=!4m2!3m1!1s0x487604ba39255555:0x3ba8a733caa4e6e3",
+      "overallRating": {
+        "score": 7,
+        "outOf": 10
+      },
+      "summary": "Went for dinner with Katie before heading to Jimmy's leaving party.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Quite nice",
+          "note": "Quite nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Kinda Italian",
+          "note": "Kinda Italian"
+        },
+        "theCs": {
+          "company": "great",
+          "cheese": "great",
+          "crust": "great",
+          "cost": "meh"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "unconfirmed"
+        }
+      }
+    },
+    {
+      "name": "Pizza Union Spitalfields",
+      "googleMapsLink": "https://www.google.com/maps/place/Pizza+Union+Spitalfields/data=!4m2!3m1!1s0x48761cb3a21de889:0x4f2e6d4b21557934",
+      "overallRating": {
+        "score": 7.5,
+        "outOf": 10
+      },
+      "summary": "Shared four pizzas with the boys for Nixon's bday.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Quite nice",
+          "note": "quite nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Kinda Italian",
+          "note": "kinda Italian but a chain"
+        },
+        "theCs": {
+          "cost": "amazing, probably the cheapest good pizza",
+          "crust": "very thin, almost brittle",
+          "cheese": "good",
+          "company": "the best"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "not observed"
+        }
+      }
+    },
+    {
+      "name": "Mamma Dough - Brixton",
+      "googleMapsLink": "https://www.google.com/maps/place/Mamma+Dough+-+Brixton/data=!4m2!3m1!1s0x4876046588b5e98b:0x969ce08c7f11af55",
+      "overallRating": null,
+      "summary": null,
+      "fields": null
+    },
+    {
+      "name": "Berberè Kentish Town",
+      "googleMapsLink": "https://www.google.com/maps/place/Berber%C3%A8+Kentish+Town/data=!4m2!3m1!1s0x48761b8d2e2a414f:0xb49d295355e2cd50",
+      "overallRating": {
+        "score": 7,
+        "outOf": 10
+      },
+      "summary": "Johnny's favourite pizza chain so had to try it.",
+      "fields": {
+        "nice": {
+          "rating": 3,
+          "label": "Quite nice",
+          "note": "quite nice"
+        },
+        "italian": {
+          "rating": 3,
+          "label": "Quite Italian",
+          "note": "quite Italian"
+        },
+        "theCs": {
+          "cost": "good, great company and cause for celebration of Catie's new job",
+          "cheese": "none (pizza had no cheese, was spicy)"
+        },
+        "edFactor": {
+          "status": "unknown",
+          "note": "none recorded"
+        }
+      }
+    },
+    {
+      "name": "Homeslice Neal's Yard",
+      "googleMapsLink": "https://www.google.com/maps/place/Homeslice+Neal's+Yard/data=!4m2!3m1!1s0x487604cd2995106b:0x72ce915b83f8b30e",
+      "overallRating": {
+        "score": 8.5,
+        "outOf": 10
+      },
+      "summary": null,
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": 5,
+          "label": "Extremely authentic",
+          "note": "extremely authentic"
+        },
+        "theCs": {
+          "company": "exquisite",
+          "crust": "very good",
+          "cheese": "very good",
+          "cost": "amazing, they gave us free drinks"
+        },
+        "edFactor": {
+          "status": "partial",
+          "note": "confirmed but not emphatic"
+        }
+      }
+    },
+    {
+      "name": "Ave Mario",
+      "googleMapsLink": "https://www.google.com/maps/place/Ave+Mario/data=!4m2!3m1!1s0x487605cb1cd6a4a1:0xa7a304e719d02d13",
+      "overallRating": {
+        "score": 8,
+        "outOf": 10
+      },
+      "summary": "Mine had no sauce but Katie's did and it was great.",
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": 3,
+          "label": "Quite Italian",
+          "note": "quite Italian"
+        },
+        "theCs": {
+          "cheese": "good",
+          "company": "the bestest",
+          "cost": "pretty costly but good for central London",
+          "crust": "very good crunch"
+        },
+        "edFactor": {
+          "status": "partial",
+          "note": "partial confirmation and verified"
+        }
+      }
+    },
+    {
+      "name": "Vasiniko",
+      "googleMapsLink": "https://www.google.com/maps/place/Vasiniko/data=!4m2!3m1!1s0x487605e6eb06de9d:0xcd1c4bf9f77cbe95",
+      "overallRating": {
+        "score": 8,
+        "outOf": 10
+      },
+      "summary": "Had the Margherita after a day of shopping and drinking with Katie.",
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": 4,
+          "label": "Italian",
+          "note": "they spoke Italian"
+        },
+        "theCs": {
+          "cheese": "great",
+          "company": "amazing",
+          "cost": "good",
+          "crust": "amazing"
+        },
+        "edFactor": {
+          "status": "confirmed",
+          "note": "confirmed"
+        }
+      }
+    },
+    {
+      "name": "Japes",
+      "googleMapsLink": "https://www.google.com/maps/place/Japes/data=!4m2!3m1!1s0x4876052cfe0aab45:0x1122827d4ff44483",
+      "overallRating": {
+        "score": 5,
+        "outOf": 10
+      },
+      "summary": "Went for the classic, very wet/floppy crust.",
+      "fields": {
+        "nice": {
+          "rating": 2,
+          "label": "Kinda nice",
+          "note": "kinda nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Not very Italian",
+          "note": "not very Italian since they only do deep dish pizzas"
+        },
+        "theCs": {
+          "cheese": "great",
+          "crust": "good outside, but wet/floppy",
+          "cost": "not good",
+          "company": "none, but good weather"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "no, too distracted trying to hold the pizza up"
+        }
+      }
+    },
+    {
+      "name": "Pizza Warehouse Ltd",
+      "googleMapsLink": "https://www.google.com/maps/place/Pizza+Warehouse+Ltd/data=!4m2!3m1!1s0x48761b1496748477:0x91239fd6ad2c83f4",
+      "overallRating": null,
+      "summary": "Went for a slice over lunch.",
+      "fields": {
+        "nice": {
+          "rating": 1,
+          "label": "Not nice",
+          "note": "not nice"
+        },
+        "italian": {
+          "rating": 2,
+          "label": "Kinda Italian",
+          "note": "kinda"
+        },
+        "theCs": {
+          "cheese": "poor",
+          "crust": "bad, no crisp base",
+          "cost": "kinda spenny for a slice",
+          "company": "none"
+        },
+        "edFactor": {
+          "status": "unconfirmed",
+          "note": "no"
+        }
+      }
+    },
+    {
+      "name": "Collective - Kennington Park Cafe",
+      "googleMapsLink": "https://www.google.com/maps/place/Collective+-+Kennington+Park+Cafe/data=!4m2!3m1!1s0x487605fc83cc95e5:0xd91d8c17bda851e1",
+      "overallRating": {
+        "score": 8.5,
+        "outOf": 10
+      },
+      "summary": "Went with Ceci, Stiffy, Tara, Johnny and Amy.",
+      "fields": {
+        "nice": {
+          "rating": 4,
+          "label": "Very nice",
+          "note": "very nice"
+        },
+        "italian": {
+          "rating": null,
+          "label": null,
+          "note": "thin crust and nice smokey flavour"
+        },
+        "theCs": {
+          "crust": "crispy base and crust",
+          "company": "good",
+          "cheese": "good amount"
+        },
+        "edFactor": {
+          "status": "partial",
+          "note": "confirmed but not verified"
+        }
+      }
+    },
+    {
+      "name": "Pizza Paradiso",
+      "googleMapsLink": "https://www.google.com/maps/place/Pizza+Paradiso/data=!4m2!3m1!1s0x48761b0ae89d6af9:0xd2a2002bd5f583e2",
+      "overallRating": {
+        "score": 7,
+        "outOf": 10
+      },
+      "summary": "Good price and great tomato sauce, not very crisp like ordered and could be bigger.",
+      "fields": null
+    },
+    {
+      "name": "Pizza Pilgrims Camden",
+      "googleMapsLink": "https://www.google.com/maps/place/Pizza+Pilgrims+Camden/data=!4m2!3m1!1s0x48761b7b064edd8b:0xe84babc409afa831",
+      "overallRating": {
+        "score": 7.5,
+        "outOf": 10
+      },
+      "summary": "Burrata & Pesto. Good price, smokey flavour and good pesto base.",
+      "fields": null
+    }
+  ],
+  "wishlist": [
+    {
+      "name": "67 Sourdough",
+      "googleMapsLink": "https://www.google.com/maps/place/67+Sourdough/data=!4m2!3m1!1s0x48761b94633d3eeb:0xa8ca29cbbbbe6b05"
+    },
+    {
+      "name": "Spizza Napoletana London Bridge",
+      "googleMapsLink": "https://www.google.com/maps/place/Spizza+Napoletana+London+Bridge/data=!4m2!3m1!1s0x487603021d2eb1df:0xa4957449d9bfae11"
+    },
+    {
+      "name": "Carmela's Pizzeria",
+      "googleMapsLink": "https://www.google.com/maps/place/Carmela's+Pizzeria/data=!4m2!3m1!1s0x48761bcb0127fd85:0x931d6a26004001db"
+    },
+    {
+      "name": "Berberè Pizzeria",
+      "googleMapsLink": "https://www.google.com/maps/place/Berber%C3%A8+Pizzeria/data=!4m2!3m1!1s0x48761b5d88a35d13:0x46561cfd658c076b"
+    },
+    {
+      "name": "Paulie's Shoreditch",
+      "googleMapsLink": "https://www.google.com/maps/place/Paulie's+Shoreditch/data=!4m2!3m1!1s0x48761d7c8a074f15:0x876d72c25e870332"
+    },
+    {
+      "name": "San Gennaro",
+      "googleMapsLink": "https://www.google.com/maps/place/San+Gennaro/data=!4m2!3m1!1s0x48760506eebfa553:0x1a311420e398c088"
+    },
+    {
+      "name": "Cowboys Pizza @ Next Door Records",
+      "googleMapsLink": "https://www.google.com/maps/place/Cowboys+Pizza+@+Next+Door+Records/data=!4m2!3m1!1s0x48760fe1f3a6076b:0xa2d9b161a306b315"
+    },
+    {
+      "name": "Lenny's Apizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Lenny%E2%80%99s+Apizza/data=!4m2!3m1!1s0x48761b007022e13f:0x9820dbff0706d6c"
+    },
+    {
+      "name": "Coastal Crust Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Coastal+Crust+Pizza/data=!4m2!3m1!1s0x4872530fbf87c14d:0x4893fc25382e12fb"
+    },
+    {
+      "name": "The Spurstowe Arms",
+      "googleMapsLink": "https://www.google.com/maps/place/The+Spurstowe+Arms/data=!4m2!3m1!1s0x487606f76b898add:0x23f4eb01ef8cd953"
+    },
+    {
+      "name": "Senza Fondo",
+      "googleMapsLink": "https://www.google.com/maps/place/Senza+Fondo/data=!4m2!3m1!1s0x48761d3f92245297:0xbd08a623abed3303"
+    },
+    {
+      "name": "Sarv's Slice",
+      "googleMapsLink": "https://www.google.com/maps/place/Sarv's+Slice/data=!4m2!3m1!1s0x48760d3d532dc427:0x4305f11c6a261a4d"
+    },
+    {
+      "name": "Fatto a Mano Covent Garden",
+      "googleMapsLink": "https://www.google.com/maps/place/Fatto+a+Mano+Covent+Garden/data=!4m2!3m1!1s0x48760526b910acd5:0xb8bcd086cb6453b1"
+    },
+    {
+      "name": "D4100 PIZZA - BLOOMSBURY (Dinner for One Hundred)",
+      "googleMapsLink": "https://www.google.com/maps/place/D4100+PIZZA+-+BLOOMSBURY+(Dinner+for+One+Hundred)/data=!4m2!3m1!1s0x48761b628c07471d:0xef73a949e12f626"
+    },
+    {
+      "name": "Motherdough Pizza Neapolitan",
+      "googleMapsLink": "https://www.google.com/maps/place/Motherdough+Pizza+Neapolitan/data=!4m2!3m1!1s0x487603007d5fb6a1:0xf44608a16fdf887a"
+    },
+    {
+      "name": "Vincenzo's Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Vincenzo's+Pizza/data=!4m2!3m1!1s0x48766b8191d40157:0xdef3136928ec546e"
+    },
+    {
+      "name": "Heist Bank",
+      "googleMapsLink": "https://www.google.com/maps/place/Heist+Bank/data=!4m2!3m1!1s0x48761ab23fb82b9d:0x37a776cbee19b92f"
+    },
+    {
+      "name": "Vapiano Paddington",
+      "googleMapsLink": "https://www.google.com/maps/place/Vapiano+Paddington/data=!4m2!3m1!1s0x48761bb25532fd6b:0x49a38a73c98c2e6a"
+    },
+    {
+      "name": "Yard Sale Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Yard+Sale+Pizza/data=!4m2!3m1!1s0x48761dff1900bb1d:0x9b35a8343de46214"
+    },
+    {
+      "name": "Sodo Pizza Bethnal Green",
+      "googleMapsLink": "https://www.google.com/maps/place/Sodo+Pizza+Bethnal+Green/data=!4m2!3m1!1s0x48761cdb6c2decbd:0x47346bbb5be1781d"
+    },
+    {
+      "name": "Theo's",
+      "googleMapsLink": "https://www.google.com/maps/place/Theo's/data=!4m2!3m1!1s0x487605767781eb9d:0x69a1a8cf49713baa"
+    },
+    {
+      "name": "L'Antica Pizzeria",
+      "googleMapsLink": "https://www.google.com/maps/place/L'Antica+Pizzeria/data=!4m2!3m1!1s0x48761a7d671ba309:0x7ab51afefd3b3ceb"
+    },
+    {
+      "name": "ICCO - \"The People's Pizzeria\"",
+      "googleMapsLink": "https://www.google.com/maps/place/ICCO+-+%22The+People's+Pizzeria%22/data=!4m2!3m1!1s0x48761b2befd0a035:0x52ca535577a32e0f"
+    },
+    {
+      "name": "The Pembury Tavern",
+      "googleMapsLink": "https://www.google.com/maps/place/The+Pembury+Tavern/data=!4m2!3m1!1s0x48761cf0860484a1:0xe803cba83bf7bc42"
+    },
+    {
+      "name": "Cinquecento Haverstock Hill",
+      "googleMapsLink": "https://www.google.com/maps/place/Cinquecento+Haverstock+Hill/data=!4m2!3m1!1s0x48761bce7d1d6cd1:0xb8779915a387102f"
+    },
+    {
+      "name": "East West",
+      "googleMapsLink": "https://www.google.com/maps/place/East+West/data=!4m2!3m1!1s0x48761b819f4ed34b:0xb7c16867f51b82de"
+    },
+    {
+      "name": "Ria's",
+      "googleMapsLink": "https://www.google.com/maps/place/Ria's/data=!4m2!3m1!1s0x487611c8842cff15:0xa6ab6703fef50896"
+    },
+    {
+      "name": "World Famous Gordos",
+      "googleMapsLink": "https://www.google.com/maps/place/World+Famous+Gordos/data=!4m2!3m1!1s0x48761d53cefad50d:0xe564ada310310a47"
+    },
+    {
+      "name": "Napoli on the Road Chiswick",
+      "googleMapsLink": "https://www.google.com/maps/place/Napoli+on+the+Road+Chiswick/data=!4m2!3m1!1s0x48760f950ced1ba5:0x7d822731123fe241"
+    },
+    {
+      "name": "Vicoli di Napoli Pizzeria",
+      "googleMapsLink": "https://www.google.com/maps/place/Vicoli+di+Napoli+Pizzeria/data=!4m2!3m1!1s0x48761c6366ae38dd:0x6ae522db79a1ace9"
+    },
+    {
+      "name": "Fatto Pizza & Beer",
+      "googleMapsLink": "https://www.google.com/maps/place/Fatto+Pizza+%26+Beer/data=!4m2!3m1!1s0x48761bc720b97f8d:0x866cb9405778a7d1"
+    },
+    {
+      "name": "SACRO DOUGH PIZZERIA NAPOLETANA",
+      "googleMapsLink": "https://www.google.com/maps/place/SACRO+DOUGH+PIZZERIA+NAPOLETANA/data=!4m2!3m1!1s0x487611708136b6fb:0x82606aac6070729a"
+    },
+    {
+      "name": "Farina Pizzeria Napoletana",
+      "googleMapsLink": "https://www.google.com/maps/place/Farina+Pizzeria+Napoletana/data=!4m2!3m1!1s0x48760ffb417977af:0xe2681014e1f94c01"
+    },
+    {
+      "name": "Bar Remo",
+      "googleMapsLink": "https://www.google.com/maps/place/Bar+Remo/data=!4m2!3m1!1s0x487603555cc8a5cd:0x79ff0e55cc21674b"
+    },
+    {
+      "name": "Joe Public",
+      "googleMapsLink": "https://www.google.com/maps/place/Joe+Public/data=!4m2!3m1!1s0x4876044d7abac521:0x434725714c4f3a54"
+    },
+    {
+      "name": "Mimmo La Bufala",
+      "googleMapsLink": "https://www.google.com/maps/place/Mimmo+La+Bufala/data=!4m2!3m1!1s0x48761a8aebded54f:0xe2f91c4637acc2eb"
+    },
+    {
+      "name": "Four Hundred Rabbits Pizza Restaurant Elephant And Castle",
+      "googleMapsLink": "https://www.google.com/maps/place/Four+Hundred+Rabbits+Pizza+Restaurant+Elephant+And+Castle/data=!4m2!3m1!1s0x48760518a3416755:0x4e82be983d0f46eb"
+    },
+    {
+      "name": "Santa Maria Pizzeria Fitzrovia",
+      "googleMapsLink": "https://www.google.com/maps/place/Santa+Maria+Pizzeria+Fitzrovia/data=!4m2!3m1!1s0x48761b298c9837b7:0x8d5d25a6944f1568"
+    },
+    {
+      "name": "Yard Sale Pizza",
+      "googleMapsLink": "https://www.google.com/maps/place/Yard+Sale+Pizza/data=!4m2!3m1!1s0x4876056e47ea3fe5:0x7a240d339211250f"
+    },
+    {
+      "name": "Berberè Clapham",
+      "googleMapsLink": "https://www.google.com/maps/place/Berber%C3%A8+Clapham/data=!4m2!3m1!1s0x4876045280dde461:0xa7f24e4c455f5505"
+    },
+    {
+      "name": "The Chancellors",
+      "googleMapsLink": "https://www.google.com/maps/place/The+Chancellors/data=!4m2!3m1!1s0x48760fb6cc58ee93:0x717c63a70819eb6c"
+    },
+    {
+      "name": "Sud Italia",
+      "googleMapsLink": "https://www.google.com/maps/place/Sud+Italia/data=!4m2!3m1!1s0x48761cb41e806cd5:0x2eb2b16a7c08c7af"
+    }
+  ]
+}
