@@ -111,11 +111,10 @@ function toSpots(data) {
 
   function edRow(edFactor) {
     if (!edFactor) return "";
-    const cls = edFactor.status === "confirmed" ? "yes" : edFactor.status === "partial" ? "partial" : "no";
-    const text = edFactor.status === "confirmed" ? "hand shake secured" : edFactor.status === "partial" ? "partial hand shake" : "no hand shake";
+    const cls = edFactor.status === "confirmed" ? "yes" : edFactor.status === "unconfirmed" ? "partial" : "no";
     return (
       '<div class="row"><div class="letter">E</div>' +
-      '<span class="badge ' + cls + '">' + escapeHtml(text) + "</span></div>"
+      '<span class="badge ' + cls + '">' + escapeHtml(edFactor.status) + "</span></div>"
     );
   }
 
