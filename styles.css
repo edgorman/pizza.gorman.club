@@ -553,6 +553,14 @@ body {
   color: inherit;
 }
 
+@media (min-width: 700px) {
+  .bar {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 420px) {
   .brand-icon {
     width: 30px;
