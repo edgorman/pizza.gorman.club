@@ -204,6 +204,15 @@ body {
 /* ── pins ─────────────────────────────────────────────────── */
 .pin {
   position: relative;
+  --focus-scale: 1;
+  transform: scale(var(--focus-scale));
+  /* Absolute px, not %: .pin has no intrinsic size of its own (both
+     children are absolutely positioned), so a percentage origin would
+     resolve against a zero-size box. 18/48 matches the marker's own
+     iconSize/iconAnchor in app.js, keeping the scale centred on the
+     pin's tip rather than its (nonexistent) own bounding box. */
+  transform-origin: 18px 48px;
+  transition: transform 0.25s ease-out;
 }
 
 .pin .stem {
