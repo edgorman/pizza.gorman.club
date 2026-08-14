@@ -95,8 +95,7 @@ function toSpots(data) {
     if (!field || typeof field.rating !== "number") return "";
     return (
       '<div class="row"><div class="letter">' + letter + "</div>" +
-      '<div class="track"><div class="fill" style="width:' + (field.rating / 5 * 100) + '%"></div></div>' +
-      '<div class="word">' + escapeHtml(field.label || "") + "</div></div>"
+      '<span class="badge r' + field.rating + '">' + escapeHtml(field.label || "") + "</span></div>"
     );
   }
 
@@ -113,10 +112,10 @@ function toSpots(data) {
   function edRow(edFactor) {
     if (!edFactor) return "";
     const cls = edFactor.status === "confirmed" ? "yes" : edFactor.status === "partial" ? "partial" : "no";
-    const text = edFactor.status === "confirmed" ? "handshake secured" : edFactor.status === "partial" ? "partial handshake" : "no handshake";
+    const text = edFactor.status === "confirmed" ? "hand shake secured" : edFactor.status === "partial" ? "partial hand shake" : "no hand shake";
     return (
-      '<div class="row"><div class="letter">E</div><div class="ed"><span class="badge ' + cls + '">' +
-      escapeHtml(text) + "</span></div></div>"
+      '<div class="row"><div class="letter">E</div>' +
+      '<span class="badge ' + cls + '">' + escapeHtml(text) + "</span></div>"
     );
   }
 
@@ -125,15 +124,14 @@ function toSpots(data) {
       '<button class="close" type="button" id="closeBtn" aria-label="close">' +
       '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
     const mapsBtn =
-      '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">google maps' +
+      '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">yes' +
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
 
     if (s.kind === "totry") {
       return (
         close +
-        '<div class="p-top"><div><div class="p-kick totry">on the list</div>' +
-        '<div class="p-name">' + escapeHtml(s.name) + "</div>" +
-        '<div class="p-where">not been yet</div></div></div>' +
+        '<div class="p-top"><div class="p-kick totry">on the list</div>' +
+        '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
         '<div class="p-foot"><div class="p-date">unrated</div>' + mapsBtn + "</div>"
       );
     }
@@ -149,10 +147,9 @@ function toSpots(data) {
 
     return (
       close +
-      '<div class="p-top"><div><div class="p-kick">eaten &amp; rated</div>' +
-      '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
       scoreHtml +
-      "</div>" +
+      '<div class="p-top' + (scoreHtml ? " has-score" : "") + '"><div class="p-kick">eaten &amp; rated</div>' +
+      '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
       summaryHtml +
       (niceRows ? '<div class="nice">' + niceRows + "</div>" : "") +
       (niceRows
