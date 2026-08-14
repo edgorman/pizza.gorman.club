@@ -91,6 +91,39 @@ function toSpots(data) {
     return el ? el.querySelector(".pin") : null;
   }
 
+  /* ── focus scaling: pins nearer the viewport centre render bigger ── */
+  const FOCUS_MIN_SCALE = 0.65;
+  const FOCUS_MAX_SCALE = 1.15;
+
+  function updatePinFocusScale() {
+    const size = map.getSize();
+    const cx = size.x / 2;
+    const cy = size.y / 2;
+    const maxDist = Math.sqrt(cx * cx + cy * cy) || 1;
+
+    plottable.forEach((s) => {
+      const m = markers[s.id];
+      if (!m || !map.hasLayer(m)) return;
+      const pt = map.latLngToContainerPoint(s.ll);
+      const dx = pt.x - cx;
+      const dy = pt.y - cy;
+      const t = Math.min(Math.sqrt(dx * dx + dy * dy) / maxDist, 1);
+      const scale = FOCUS_MAX_SCALE - t * (FOCUS_MAX_SCALE - FOCUS_MIN_SCALE);
+      const pin = pinEl(s.id);
+      if (pin) pin.style.setProperty("--focus-scale", scale.toFixed(3));
+    });
+  }
+
+  let focusScaleQueued = false;
+  function scheduleFocusScaleUpdate() {
+    if (focusScaleQueued) return;
+    focusScaleQueued = true;
+    requestAnimationFrame(() => {
+      focusScaleQueued = false;
+      updatePinFocusScale();
+    });
+  }
+
   function ratingRow(letter, field) {
     const hasRating = field && typeof field.rating === "number";
     const cls = hasRating ? "r" + field.rating : "no";
@@ -237,7 +270,12 @@ function toSpots(data) {
   map.on("movestart zoomstart", () => {
     if (panel.classList.contains("open")) closePanel();
   });
-  window.addEventListener("resize", () => closePanel());
+  map.on("move zoom", scheduleFocusScaleUpdate);
+  window.addEventListener("resize", () => {
+    closePanel();
+    scheduleFocusScaleUpdate();
+  });
+  updatePinFocusScale();
 
   /* ── filtering ─────────────────────────────────────────────── */
   let filter = "all";
@@ -262,6 +300,7 @@ function toSpots(data) {
     });
     closePanel(true);
     updateCount();
+    updatePinFocusScale();
   }
 
   buttons.forEach((b) => b.addEventListener("click", () => applyFilter(b.dataset.f)));
