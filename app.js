@@ -92,10 +92,13 @@ function toSpots(data) {
   }
 
   function ratingRow(letter, field) {
-    if (!field || typeof field.rating !== "number") return "";
+    if (!field) return "";
+    const hasRating = typeof field.rating === "number";
+    const cls = hasRating ? "r" + field.rating : "no";
+    const text = hasRating ? field.label || "" : "none";
     return (
       '<div class="row"><div class="letter">' + letter + "</div>" +
-      '<span class="badge r' + field.rating + '">' + escapeHtml(field.label || "") + "</span></div>"
+      '<span class="badge ' + cls + '">' + escapeHtml(text) + "</span></div>"
     );
   }
 
