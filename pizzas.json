@@ -740,12 +740,6 @@
       "lng": -0.1780517
     },
     {
-      "name": "Yard Sale Pizza",
-      "googleMapsLink": "https://www.google.com/maps/place/Yard+Sale+Pizza/data=!4m2!3m1!1s0x48761dff1900bb1d:0x9b35a8343de46214",
-      "lat": null,
-      "lng": null
-    },
-    {
       "name": "Sodo Pizza Bethnal Green",
       "googleMapsLink": "https://www.google.com/maps/place/Sodo+Pizza+Bethnal+Green/data=!4m2!3m1!1s0x48761cdb6c2decbd:0x47346bbb5be1781d",
       "lat": 51.525546,
@@ -858,12 +852,6 @@
       "googleMapsLink": "https://www.google.com/maps/place/Santa+Maria+Pizzeria+Fitzrovia/data=!4m2!3m1!1s0x48761b298c9837b7:0x8d5d25a6944f1568",
       "lat": 51.5204223,
       "lng": -0.1413813
-    },
-    {
-      "name": "Yard Sale Pizza",
-      "googleMapsLink": "https://www.google.com/maps/place/Yard+Sale+Pizza/data=!4m2!3m1!1s0x4876056e47ea3fe5:0x7a240d339211250f",
-      "lat": null,
-      "lng": null
     },
     {
       "name": "Berberè Clapham",
