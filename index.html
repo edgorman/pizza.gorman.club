@@ -18,7 +18,12 @@
   <div id="map"></div>
 
   <header class="bar">
-    <img class="brand-icon" src="assets/mascot.png" alt="" width="36" height="36" />
+    <button type="button" class="mascot-btn" id="mascotBtn" aria-label="tap ed">
+      <img class="brand-icon" src="assets/mascot.png" alt="" width="36" height="36" />
+      <video class="brand-icon mascot-video" id="mascotVideo" width="36" height="36" playsinline preload="none">
+        <source src="assets/mascot.mp4" type="video/mp4" />
+      </video>
+    </button>
     <h1 class="brand">ed's <em>slice</em> of life</h1>
     <div class="bar-right">
       <div class="count" id="count"></div>
