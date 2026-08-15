@@ -574,27 +574,68 @@ body {
   color: var(--color-neutral-700);
 }
 
-.maps {
+.foot-actions {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.maps {
   text-decoration: none;
-  white-space: nowrap;
-  font-family: var(--font-heading);
-  font-size: 13px;
-  line-height: 1;
   color: var(--color-bg);
   background: var(--color-text);
   border: 3px solid var(--color-text);
-  border-radius: 999px;
-  padding: 10px 15px;
-  min-height: 40px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
 }
 
 .maps:hover {
   background: var(--color-accent-700);
   border-color: var(--color-accent-700);
+}
+
+.share-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 3px solid var(--color-text);
+  border-radius: 50%;
+  transition: background 0.12s;
+}
+
+.share-btn:hover {
+  background: var(--color-neutral-200);
+}
+
+.share-btn .check-icon {
+  display: none;
+}
+
+.share-btn.done {
+  color: var(--color-accent-2-700);
+  background: var(--color-accent-2-200);
+}
+
+.share-btn.done .share-icon {
+  display: none;
+}
+
+.share-btn.done .check-icon {
+  display: block;
 }
 
 /* ── geocoding hint banner ────────────────────────────────── */
