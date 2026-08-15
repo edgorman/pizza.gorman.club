@@ -36,6 +36,10 @@ html, body {
   color: var(--color-text);
 }
 
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: var(--color-bg);
 }
