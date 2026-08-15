@@ -43,22 +43,24 @@
       <button class="close" type="button" id="suggestClose" aria-label="close">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
-      <div class="p-kick">suggest a place</div>
-      <div class="field">
-        <label for="suggestName">name</label>
-        <input type="text" id="suggestName" name="name" required maxlength="120" autocomplete="off" />
-      </div>
-      <div class="field">
-        <label for="suggestLink">google maps link <span class="optional">(optional)</span></label>
-        <input type="url" id="suggestLink" name="link" placeholder="https://www.google.com/maps/place/..." autocomplete="off" />
-      </div>
-      <div class="field">
-        <label for="suggestNote">why? <span class="optional">(optional)</span></label>
-        <textarea id="suggestNote" name="note" rows="3" maxlength="500"></textarea>
-      </div>
-      <div class="modal-actions">
-        <button type="button" class="btn btn-secondary" id="suggestCancel">cancel</button>
-        <button type="submit" class="btn btn-primary">open email</button>
+      <div class="modal-body">
+        <div class="p-kick">suggest a place</div>
+        <div class="field">
+          <label for="suggestName">name of pizza place</label>
+          <input type="text" id="suggestName" name="name" required maxlength="120" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="suggestLink">google maps link <span class="optional">(optional)</span></label>
+          <input type="url" id="suggestLink" name="link" placeholder="https://www.google.com/maps/place/..." autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="suggestNote">why? <span class="optional">(optional)</span></label>
+          <textarea id="suggestNote" name="note" rows="3" maxlength="500"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="suggestCancel">cancel</button>
+          <button type="submit" class="btn btn-primary">open email</button>
+        </div>
       </div>
     </form>
   </div>
