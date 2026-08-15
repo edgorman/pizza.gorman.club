@@ -20,11 +20,12 @@
   <header class="bar">
     <img class="brand-icon" src="assets/mascot.png" alt="" width="36" height="36" />
     <h1 class="brand">ed's <em>slice</em> of life</h1>
-    <div class="count" id="count"></div>
-    <button type="button" class="suggest-btn" id="suggestBtn" aria-haspopup="dialog" aria-controls="suggestModal">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-      <span>suggest a place</span>
-    </button>
+    <div class="bar-right">
+      <div class="count" id="count"></div>
+      <button type="button" class="suggest-btn" id="suggestBtn" aria-haspopup="dialog" aria-controls="suggestModal" aria-label="suggest a place" title="suggest a place">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
   </header>
 
   <nav class="filters" id="filters" aria-label="filter pizza spots">
@@ -38,13 +39,11 @@
   <section id="panel" role="dialog" aria-modal="false" aria-label="pizza spot details"></section>
 
   <div class="modal-backdrop" id="suggestBackdrop" hidden>
-    <form id="suggestModal" class="suggest-modal" role="dialog" aria-modal="true" aria-labelledby="suggestTitle">
+    <form id="suggestModal" class="suggest-modal" role="dialog" aria-modal="true" aria-label="suggest a place">
       <button class="close" type="button" id="suggestClose" aria-label="close">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
       <div class="p-kick">suggest a place</div>
-      <h2 class="p-name" id="suggestTitle">new spot</h2>
-      <p class="modal-hint">This opens your email app with a message to <strong>pizza@gorman.club</strong> &mdash; hit send there and it'll get reviewed.</p>
       <div class="field">
         <label for="suggestName">name</label>
         <input type="text" id="suggestName" name="name" required maxlength="120" autocomplete="off" />
