@@ -353,12 +353,14 @@ function toSpots(data) {
 
   function openSuggest() {
     closePanel();
+    closeAbout();
     suggestForm.reset();
     suggestBackdrop.hidden = false;
     document.getElementById("suggestName").focus();
   }
 
   function closeSuggest() {
+    if (suggestBackdrop.hidden) return;
     suggestBackdrop.hidden = true;
     suggestBtn.focus();
   }
@@ -393,6 +395,32 @@ function toSpots(data) {
 
     window.location.href = mailto;
     closeSuggest();
+  });
+
+  /* ── about the author ─────────────────────────────────────── */
+  const aboutBtn = document.getElementById("aboutBtn");
+  const aboutBackdrop = document.getElementById("aboutBackdrop");
+  const aboutClose = document.getElementById("aboutClose");
+
+  function openAbout() {
+    closePanel();
+    closeSuggest();
+    aboutBackdrop.hidden = false;
+  }
+
+  function closeAbout() {
+    if (aboutBackdrop.hidden) return;
+    aboutBackdrop.hidden = true;
+    aboutBtn.focus();
+  }
+
+  aboutBtn.addEventListener("click", openAbout);
+  aboutClose.addEventListener("click", closeAbout);
+  aboutBackdrop.addEventListener("click", (e) => {
+    if (e.target === aboutBackdrop) closeAbout();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !aboutBackdrop.hidden) closeAbout();
   });
 
   /* ── mascot easter egg ────────────────────────────────────── */
