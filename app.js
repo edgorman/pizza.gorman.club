@@ -305,4 +305,55 @@ function toSpots(data) {
 
   buttons.forEach((b) => b.addEventListener("click", () => applyFilter(b.dataset.f)));
   updateCount();
+
+  /* ── suggest a place ──────────────────────────────────────── */
+  const suggestBtn = document.getElementById("suggestBtn");
+  const suggestBackdrop = document.getElementById("suggestBackdrop");
+  const suggestForm = document.getElementById("suggestModal");
+  const suggestClose = document.getElementById("suggestClose");
+  const suggestCancel = document.getElementById("suggestCancel");
+
+  function openSuggest() {
+    closePanel();
+    suggestForm.reset();
+    suggestBackdrop.hidden = false;
+    document.getElementById("suggestName").focus();
+  }
+
+  function closeSuggest() {
+    suggestBackdrop.hidden = true;
+    suggestBtn.focus();
+  }
+
+  suggestBtn.addEventListener("click", openSuggest);
+  suggestClose.addEventListener("click", closeSuggest);
+  suggestCancel.addEventListener("click", closeSuggest);
+  suggestBackdrop.addEventListener("click", (e) => {
+    if (e.target === suggestBackdrop) closeSuggest();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !suggestBackdrop.hidden) closeSuggest();
+  });
+
+  suggestForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("suggestName").value.trim();
+    const link = document.getElementById("suggestLink").value.trim();
+    const note = document.getElementById("suggestNote").value.trim();
+    if (!name) return;
+
+    const subject = "Pizza suggestion: " + name;
+    const lines = ["Place: " + name];
+    if (link) lines.push("Google Maps: " + link);
+    if (note) lines.push("", "Why: " + note);
+
+    const mailto =
+      "mailto:pizza@gorman.club?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(lines.join("\n"));
+
+    window.location.href = mailto;
+    closeSuggest();
+  });
 })();

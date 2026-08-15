@@ -21,6 +21,10 @@
     <img class="brand-icon" src="assets/mascot.png" alt="" width="36" height="36" />
     <h1 class="brand">ed's <em>slice</em> of life</h1>
     <div class="count" id="count"></div>
+    <button type="button" class="suggest-btn" id="suggestBtn" aria-haspopup="dialog" aria-controls="suggestModal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      <span>suggest a place</span>
+    </button>
   </header>
 
   <nav class="filters" id="filters" aria-label="filter pizza spots">
@@ -32,6 +36,33 @@
   <div class="geo-hint" id="geoHint" hidden></div>
 
   <section id="panel" role="dialog" aria-modal="false" aria-label="pizza spot details"></section>
+
+  <div class="modal-backdrop" id="suggestBackdrop" hidden>
+    <form id="suggestModal" class="suggest-modal" role="dialog" aria-modal="true" aria-labelledby="suggestTitle">
+      <button class="close" type="button" id="suggestClose" aria-label="close">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="p-kick">suggest a place</div>
+      <h2 class="p-name" id="suggestTitle">new spot</h2>
+      <p class="modal-hint">This opens your email app with a message to <strong>pizza@gorman.club</strong> &mdash; hit send there and it'll get reviewed.</p>
+      <div class="field">
+        <label for="suggestName">name</label>
+        <input type="text" id="suggestName" name="name" required maxlength="120" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="suggestLink">google maps link <span class="optional">(optional)</span></label>
+        <input type="url" id="suggestLink" name="link" placeholder="https://www.google.com/maps/place/..." autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="suggestNote">why? <span class="optional">(optional)</span></label>
+        <textarea id="suggestNote" name="note" rows="3" maxlength="500"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="suggestCancel">cancel</button>
+        <button type="submit" class="btn btn-primary">open email</button>
+      </div>
+    </form>
+  </div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="app.js"></script>
