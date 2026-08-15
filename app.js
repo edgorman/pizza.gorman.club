@@ -12,9 +12,18 @@ function hasCoords(place) {
   return typeof place.lat === "number" && typeof place.lng === "number";
 }
 
+function slugify(str) {
+  return String(str)
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function toSpots(data) {
   const eaten = data.visited.map((p) => ({
     id: "v:" + p.name,
+    slug: "v-" + slugify(p.name),
     kind: "eaten",
     name: p.name,
     ll: hasCoords(p) ? [p.lat, p.lng] : null,
@@ -25,6 +34,7 @@ function toSpots(data) {
   }));
   const totry = data.wishlist.map((p) => ({
     id: "w:" + p.name,
+    slug: "w-" + slugify(p.name),
     kind: "totry",
     name: p.name,
     ll: hasCoords(p) ? [p.lat, p.lng] : null,
@@ -157,16 +167,22 @@ function toSpots(data) {
     const close =
       '<button class="close" type="button" id="closeBtn" aria-label="close">' +
       '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+    const shareBtn =
+      '<button class="share-btn" type="button" data-slug="' + escapeHtml(s.slug) + '" data-name="' + escapeHtml(s.name) + '" aria-label="share ' + escapeHtml(s.name) + '" title="share">' +
+      '<svg class="share-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>' +
+      '<svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>' +
+      "</button>";
     const mapsBtn =
       '<a class="maps" href="' + s.googleMapsLink + '" target="_blank" rel="noopener">maps' +
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
+    const footActions = '<div class="foot-actions">' + shareBtn + mapsBtn + "</div>";
 
     if (s.kind === "totry") {
       return (
         close +
         '<div class="p-head"><div class="p-kick totry">on the list</div>' +
         '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
-        '<div class="p-foot"><div class="p-date">unrated</div>' + mapsBtn + "</div>"
+        '<div class="p-foot"><div class="p-date">unrated</div>' + footActions + "</div>"
       );
     }
 
@@ -193,7 +209,7 @@ function toSpots(data) {
       '<div class="p-foot with-key">' +
       '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
       "<b>E</b> did Ed shake his hand in satisfaction</div>" +
-      mapsBtn +
+      footActions +
       "</div>"
     );
   }
@@ -256,9 +272,31 @@ function toSpots(data) {
     if (!silent) updateCount();
   }
 
+  function shareSpot(btn) {
+    const url = location.origin + location.pathname + "?spot=" + btn.dataset.slug;
+    if (navigator.share) {
+      navigator.share({ title: btn.dataset.name, url }).catch(() => {});
+      return;
+    }
+    const showDone = () => {
+      btn.classList.add("done");
+      setTimeout(() => btn.classList.remove("done"), 1400);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(showDone, () => window.prompt("Copy this link:", url));
+    } else {
+      window.prompt("Copy this link:", url);
+    }
+  }
+
   document.addEventListener("click", (e) => {
     if (e.target.closest("#closeBtn")) {
       closePanel();
+      return;
+    }
+    const shareBtn = e.target.closest(".share-btn");
+    if (shareBtn) {
+      shareSpot(shareBtn);
       return;
     }
     if (e.target.closest("#panel") || e.target.closest(".pin") || e.target.closest(".filters") || e.target.closest(".bar")) return;
@@ -371,4 +409,11 @@ function toSpots(data) {
   mascotVideo.addEventListener("ended", () => {
     mascotBtn.classList.remove("playing");
   });
+
+  /* ── open a shared spot from the URL ─────────────────────────── */
+  const sharedSlug = new URLSearchParams(location.search).get("spot");
+  if (sharedSlug) {
+    const shared = plottable.find((s) => s.slug === sharedSlug);
+    if (shared) openSpot(shared.id);
+  }
 })();
