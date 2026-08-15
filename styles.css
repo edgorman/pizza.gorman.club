@@ -36,6 +36,10 @@ html, body {
   color: var(--color-text);
 }
 
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: var(--color-bg);
 }
@@ -98,6 +102,7 @@ body {
 }
 
 .brand-icon {
+  box-sizing: border-box;
   flex: none;
   width: 36px;
   height: 36px;
@@ -409,13 +414,40 @@ body {
   border: 3px solid var(--color-text);
   box-shadow: 3px 3px 0 var(--color-text);
   font-family: var(--font-heading);
-  font-size: 20px;
   line-height: 1;
 }
 
-.score span {
+.score-num {
+  font-size: 25px;
+}
+
+.score-out {
+  position: absolute;
+  bottom: 11px;
   font-size: 10px;
   opacity: 0.8;
+}
+
+@keyframes score-wiggle {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-10deg) scale(1.08);
+  }
+  45% {
+    transform: rotate(9deg) scale(1.08);
+  }
+  70% {
+    transform: rotate(-4deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+#panel.open .score {
+  animation: score-wiggle 0.55s ease-out;
 }
 
 .close {

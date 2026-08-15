@@ -187,7 +187,7 @@ function toSpots(data) {
     }
 
     const scoreHtml = s.overallRating
-      ? '<div class="score">' + s.overallRating.score + '<span>/' + s.overallRating.outOf + "</span></div>"
+      ? '<div class="score"><span class="score-num">' + s.overallRating.score + '</span><span class="score-out">/' + s.overallRating.outOf + "</span></div>"
       : "";
     const summaryHtml = s.summary ? '<p class="p-review">' + escapeHtml(s.summary) + "</p>" : "";
     const fields = s.fields;
