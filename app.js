@@ -192,7 +192,7 @@ function toSpots(data) {
       '<div class="nice">' + niceRows + "</div>" +
       '<div class="p-foot with-key">' +
       '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
-      "<b>E</b> ed factor: did I shake a hand while holding a slice</div>" +
+      "<b>E</b> did Ed shake his hand in satisfaction</div>" +
       mapsBtn +
       "</div>"
     );
@@ -355,5 +355,20 @@ function toSpots(data) {
 
     window.location.href = mailto;
     closeSuggest();
+  });
+
+  /* ── mascot easter egg ────────────────────────────────────── */
+  const mascotBtn = document.getElementById("mascotBtn");
+  const mascotVideo = document.getElementById("mascotVideo");
+
+  mascotBtn.addEventListener("click", () => {
+    if (mascotBtn.classList.contains("playing")) return;
+    mascotBtn.classList.add("playing");
+    mascotVideo.currentTime = 0;
+    mascotVideo.play().catch(() => mascotBtn.classList.remove("playing"));
+  });
+
+  mascotVideo.addEventListener("ended", () => {
+    mascotBtn.classList.remove("playing");
   });
 })();
