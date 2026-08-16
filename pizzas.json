@@ -870,6 +870,12 @@
       "googleMapsLink": "https://www.google.com/maps/place/Sud+Italia/data=!4m2!3m1!1s0x48761cb41e806cd5:0x2eb2b16a7c08c7af",
       "lat": 51.519391,
       "lng": -0.075416
+    },
+    {
+      "name": "Carmy's",
+      "googleMapsLink": "https://maps.app.goo.gl/GmenWRZzU3npniPU9",
+      "lat": 51.5150205,
+      "lng": -0.1266803
     }
   ]
 }
