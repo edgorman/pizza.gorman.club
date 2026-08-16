@@ -30,6 +30,7 @@
       <button type="button" class="suggest-btn" id="suggestBtn" aria-haspopup="dialog" aria-controls="suggestModal" aria-label="suggest a place" title="suggest a place">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
       </button>
+      <button type="button" class="about-btn" id="aboutBtn" aria-haspopup="dialog" aria-controls="aboutModal" aria-label="about the author" title="about the author">?</button>
     </div>
   </header>
 
@@ -68,6 +69,24 @@
         </div>
       </div>
     </form>
+  </div>
+
+  <div class="modal-backdrop" id="aboutBackdrop" hidden>
+    <div id="aboutModal" class="suggest-modal about-modal" role="dialog" aria-modal="true" aria-label="about the author">
+      <button class="close" type="button" id="aboutClose" aria-label="close">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-body">
+        <div class="about-avatar"><img src="assets/author.jpg" alt="" /></div>
+        <div class="p-kick">about the author</div>
+        <h2 class="about-name">Ed Gorman</h2>
+        <p class="about-bio">
+          Ed Gorman is, by his own solemn assessment, London's foremost itinerant arbiter of doughy provenance
+          &mdash; a connoisseur whose forensic gustatory audits have reduced grown men to tears over a
+          suspiciously underwhelming cornicione.
+        </p>
+      </div>
+    </div>
   </div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
