@@ -427,16 +427,24 @@ function toSpots(data) {
   const mascotBtn = document.getElementById("mascotBtn");
   const mascotVideo = document.getElementById("mascotVideo");
 
-  mascotBtn.addEventListener("click", () => {
+  function playMascot(muted) {
     if (mascotBtn.classList.contains("playing")) return;
     mascotBtn.classList.add("playing");
+    mascotVideo.muted = muted;
     mascotVideo.currentTime = 0;
     mascotVideo.play().catch(() => mascotBtn.classList.remove("playing"));
-  });
+  }
+
+  mascotBtn.addEventListener("click", () => playMascot(false));
 
   mascotVideo.addEventListener("ended", () => {
     mascotBtn.classList.remove("playing");
   });
+
+  // Autoplay on load has to be muted — browsers block audible autoplay
+  // without a user gesture. Tapping the mascot afterwards still plays
+  // with sound, since that click is the gesture.
+  playMascot(true);
 
   /* ── open a shared spot from the URL ─────────────────────────── */
   const sharedSlug = new URLSearchParams(location.search).get("spot");
