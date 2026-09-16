@@ -962,6 +962,12 @@
       "googleMapsLink": "https://maps.app.goo.gl/8e5ynbTZZ6naoYyaA",
       "lat": 51.4883,
       "lng": -0.1197
+    },
+    {
+      "name": "Amelie's Pizza",
+      "googleMapsLink": "https://maps.app.goo.gl/ehrQoVHrrvFE8osY9",
+      "lat": 51.5363,
+      "lng": -0.1164
     }
   ]
 }
