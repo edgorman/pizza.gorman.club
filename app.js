@@ -180,9 +180,11 @@ function toSpots(data) {
     if (s.kind === "totry") {
       return (
         close +
+        '<div class="p-scroll">' +
         '<div class="p-head"><div class="p-kick totry">on the list</div>' +
         '<div class="p-name">' + escapeHtml(s.name) + "</div></div>" +
-        '<div class="p-foot"><div class="p-date">unrated</div>' + footActions + "</div>"
+        '<div class="p-foot"><div class="p-date">unrated</div>' + footActions + "</div>" +
+        "</div>"
       );
     }
 
@@ -199,6 +201,7 @@ function toSpots(data) {
 
     return (
       close +
+      '<div class="p-scroll">' +
       scoreHtml +
       '<div class="p-head' + (scoreHtml ? " has-score" : "") + '">' +
       '<div class="p-top"><div class="p-kick">eaten &amp; rated</div>' +
@@ -210,6 +213,7 @@ function toSpots(data) {
       '<div class="key"><b>N</b> nice &middot; <b>I</b> italian-ness, innovative-ness &middot; <b>C</b> crust, cheese, cost, company &middot; ' +
       "<b>E</b> did Ed shake his hand in satisfaction</div>" +
       footActions +
+      "</div>" +
       "</div>"
     );
   }
