@@ -400,6 +400,12 @@ body {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   min-height: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.p-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 #panel.open {
