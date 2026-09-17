@@ -27,6 +27,10 @@
   --space-4: 17.6px;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   margin: 0;
