@@ -224,7 +224,7 @@ function toSpots(data) {
     const w = panel.offsetWidth;
     const h = panel.offsetHeight;
 
-    let x = Math.min(Math.max(12, px - w / 2), vw - w - 12);
+    let x = Math.max(12, Math.min(px - w / 2, vw - w - 12));
     let y = py - h - 16;
     if (y < 74) y = Math.min(py + 60, vh - h - 96);
     y = Math.max(y, 12);
